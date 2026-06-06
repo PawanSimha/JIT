@@ -38,20 +38,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Mobile menu toggle ──
-  const headerToggle = document.getElementById('headerToggle');
-  const headerNav = document.getElementById('headerNav');
-  if (headerToggle && headerNav) {
-    headerToggle.addEventListener('click', () => {
-      headerToggle.classList.toggle('open');
-      headerNav.classList.toggle('open');
-    });
-    headerNav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        headerToggle.classList.remove('open');
-        headerNav.classList.remove('open');
-      });
-    });
-  }
-
 });

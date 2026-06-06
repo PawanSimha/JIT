@@ -449,6 +449,20 @@ ul { list-style: none; }
   margin-bottom: 20px;
   flex: 1;
 }
+.ext-details {
+  list-style: none;
+  margin-bottom: 16px;
+  padding: 0;
+}
+.ext-details li {
+  font-size: 13px;
+  color: var(--text-3);
+  padding: 3px 0;
+}
+.ext-details li strong {
+  color: var(--text-2);
+  font-weight: 500;
+}
 .ext-link {
   font-size: 14px;
   color: var(--accent);
