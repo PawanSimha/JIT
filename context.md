@@ -75,6 +75,7 @@ JIT/
 │
 ├── Logo.webp                  # Brand logo — used in nav (36px), about section (300px), footer (44px),
 │                               # favicon (32/192/180), apple-touch-icon, OG image, JSON-LD image
+├── Hero JIT.webp              # README hero / banner image
 │
 ├── MutedHue/                   # Chrome Extension MV3 — adaptive text selection color replacer
 │   ├── manifest.json           #   content_scripts matches <all_urls>, run_at document_start
@@ -167,7 +168,7 @@ JIT/
 
 ### `[/]` In-Progress Workloads
 - `[/]` GitHub Pages activation (requires manual click in repo settings)
-- `[/]` README.md updated (license badge fixed to GPLv3, stale partials removed from tree)
+- `[x]` README.md updated (complete rewrite following portfolio format, no emojis/em dashes)
 
 ### `[ ]` Upcoming Implementations (Next Steps)
 - `[ ]` Deploy live at `https://pawansimha.github.io/JIT/`
