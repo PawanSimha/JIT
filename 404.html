@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page not found · JIT</title>
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="fonts.css" />
+  <style>
+    *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --g-blue: #4285F4;
+      --bg: #000000;
+      --text: #ffffff;
+      --text-dim: #9aa0a6;
+      --border: rgba(255,255,255,0.08);
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Google Sans', system-ui, -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      padding: 2rem;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .status { font-size: clamp(5rem, 20vw, 10rem); font-weight: 700; line-height: 1; letter-spacing: -0.04em; }
+    .status span { color: var(--g-blue); }
+    h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 500; margin: 0.5rem 0 0.75rem; }
+    p { color: var(--text-dim); max-width: 32rem; font-size: clamp(0.95rem, 2vw, 1.1rem); line-height: 1.6; margin-bottom: 2rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--g-blue); color: #fff; text-decoration: none;
+      padding: 0.75rem 2rem; border-radius: 100px;
+      font-size: 1rem; font-weight: 500;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .footer-text { margin-top: 3rem; font-size: 0.85rem; color: var(--text-dim); }
+    a { color: var(--g-blue); }
+  </style>
+</head>
+<body>
+  <div class="status">4<span>0</span>4</div>
+  <h1>This page isn&rsquo;t available</h1>
+  <p>The link you followed may be broken, or the page may have been moved or deleted. Either way, you&rsquo;re not stuck &mdash; the home page has everything JIT offers.</p>
+  <a href="index.html" class="btn" aria-label="Return to JIT home page">&larr; Back to Home</a>
+  <p class="footer-text">JIT &middot; Browser Extension Studio</p>
+</body>
+</html>

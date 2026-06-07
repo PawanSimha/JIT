@@ -1,53 +1,113 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* JIT - Browser Extension Studio
+ * Copyright (C) 2026  Pawan Simha R
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 
-  // ── Scroll to top on refresh ──
-  window.scrollTo(0, 0);
+(function () {
+  'use strict';
 
-  // ── FAQ accordion ──
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+  const doc = document;
+  const win = window;
+
+  /* ── Scroll to top on fresh page load ── */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  win.scrollTo(0, 0);
+
+  /* ── Mobile menu toggle ── */
+  const toggle = doc.getElementById('headerToggle');
+  const nav = doc.getElementById('headerNav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.classList.toggle('open');
+      nav.classList.toggle('open');
     });
-  });
-
-  // ── Reveal on scroll ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('section, .ext-card, .contact-card, .about-art').forEach(el => {
-    el.classList.add('reveal');
-    observer.observe(el);
-  });
-
-  // ── Contact form ──
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      const btn = e.target.querySelector('button');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-    });
-  }
-
-  // ── Mobile menu toggle ──
-  const headerToggle = document.getElementById('headerToggle');
-  const headerNav = document.getElementById('headerNav');
-  if (headerToggle && headerNav) {
-    headerToggle.addEventListener('click', () => {
-      headerToggle.classList.toggle('open');
-      headerNav.classList.toggle('open');
-    });
-    headerNav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        headerToggle.classList.remove('open');
-        headerNav.classList.remove('open');
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('open');
+        nav.classList.remove('open');
       });
     });
   }
 
-});
+  /* ── FAQ accordion ── */
+  doc.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      doc.querySelectorAll('.faq-item.open').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ── Scroll reveal with IntersectionObserver ── */
+  const revealTargets = doc.querySelectorAll('section, .ext-card, .contact-card, .about-art');
+  if ('IntersectionObserver' in win && revealTargets.length) {
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    revealTargets.forEach(function (el) {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  } else {
+    revealTargets.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  /* ── Contact form ── */
+  const form = doc.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.textContent = 'Sending\u2026';
+        btn.disabled = true;
+      }
+    });
+  }
+
+  /* ── Cookie Consent ── */
+  (function() {
+    var banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+    var accept = document.getElementById('cookieAccept');
+    var decline = document.getElementById('cookieDecline');
+    var dismissed = localStorage.getItem('jit_cookie_consent');
+    if (dismissed) return;
+    requestAnimationFrame(function() { banner.classList.add('visible'); banner.setAttribute('aria-hidden', 'false'); });
+    function dismiss(choice) {
+      localStorage.setItem('jit_cookie_consent', choice);
+      banner.classList.remove('visible');
+      banner.setAttribute('aria-hidden', 'true');
+      setTimeout(function() { banner.style.display = 'none'; }, 400);
+    }
+    if (accept) accept.addEventListener('click', function() { dismiss('accepted'); });
+    if (decline) decline.addEventListener('click', function() { dismiss('declined'); });
+  })();
+
+})();

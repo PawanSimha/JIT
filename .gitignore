@@ -1,0 +1,41 @@
+# ── OS files ──
+Thumbs.db
+.DS_Store
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# ── Editor / IDE ──
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ── Project build output (static site — none expected, but defensive) ──
+dist/
+build/
+out/
+.next/
+
+# ── Environment & secrets ──
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# ── Node / dependency files (not used, but defensive) ──
+node_modules/
+package-lock.json
+yarn.lock
+
+# ── Logs / temp ──
+*.log
+*.tmp
+logs/
+
+# ── Partial files kept locally but not deployed ──
+header.html
+footer.html
+include.js

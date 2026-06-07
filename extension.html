@@ -1,11 +1,118 @@
+<!--
+JIT - Browser Extension Studio
+Copyright (C) 2026  Pawan Simha R
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JIT - Extensions</title>
-  <meta name="description" content="All JIT browser extensions - MutedHue, Refreshner, and more coming soon." />
-  <link rel="icon" href="Logo.png" />
+
+  <!-- ── Primary Meta ── -->
+  <title>All JIT Chrome Extensions - MutedHue & Refreshner | Free & Open Source</title>
+  <meta name="description" content="Browse all JIT browser extensions: MutedHue replaces blue text selection with adaptive grey; Refreshner provides smart auto-refresh with keyword monitoring. Both are free, open source, and privacy-first." />
+  <meta name="keywords" content="JIT extensions, Chrome extensions, MutedHue, Refreshner, free browser extensions, open source extensions, text selection color changer, auto refresh page monitor, privacy extensions" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Pawan Simha R" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://pawansimha.github.io/JIT/extension.html" />
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="All JIT Chrome Extensions - MutedHue & Refreshner" />
+  <meta property="og:description" content="Free, open source Chrome extensions: MutedHue (adaptive text selection) and Refreshner (smart auto-refresh with keyword monitoring). Built with privacy by Pawan Simha R." />
+  <meta property="og:url" content="https://pawansimha.github.io/JIT/extension.html" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="JIT brand logo" />
+  <meta property="og:site_name" content="JIT" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="All JIT Chrome Extensions - MutedHue & Refreshner" />
+  <meta name="twitter:description" content="Free, open source Chrome extensions from JIT. No trackers, zero data collection." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.png" />
+  <meta name="twitter:image:alt" content="JIT logo" />
+
+  <!-- ── JSON-LD Schema ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://github.com/PawanSimha/JIT#mutedhue",
+        "name": "MutedHue",
+        "applicationCategory": "BrowserExtension",
+        "operatingSystem": "Chrome",
+        "description": "Replaces bright blue text selection with a subtle, adaptive grey highlight on every website. Light and dark mode aware.",
+        "softwareVersion": "1.0.0",
+        "size": "12 KB",
+        "dateModified": "2026-03",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Pawan Simha R",
+          "url": "https://portfolio-pawansimha.vercel.app"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://github.com/PawanSimha/JIT#refreshner",
+        "name": "Refreshner",
+        "applicationCategory": "BrowserExtension",
+        "operatingSystem": "Chrome",
+        "description": "Smart auto-refresh with customizable intervals, keyword page monitoring, live countdown timer, and audio alerts when matches are found.",
+        "softwareVersion": "2.0",
+        "size": "28 KB",
+        "dateModified": "2026-05",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Pawan Simha R",
+          "url": "https://portfolio-pawansimha.vercel.app"
+        },
+        "permissions": ["storage", "alarms", "notifications", "tabs"]
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── Preload critical assets (LCP + fonts) ── -->
+  <link rel="preload" href="Logo.png" as="image" />
+  <link rel="preload" href="fonts.css" as="style" />
+  <link rel="preload" href="https://fonts.gstatic.com/s/googlesans/v69/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjIUvQ.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="https://fonts.gstatic.com/s/googlesanstext/v25/5aUu9-KzpRiLCAt4Unrc-xIKmCU5qEp2iw.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- ── Favicon set ── -->
+  <link rel="icon" href="Logo.png" sizes="32x32" />
+  <link rel="icon" href="Logo.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="Logo.png" sizes="180x180" />
+  <link rel="manifest" href="site.webmanifest" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="fonts.css" />
@@ -14,32 +121,36 @@
 <body>
 
   <!-- ============ HEADER ============ -->
-  <header class="header" id="header">
+  <header class="header" id="header" role="banner">
     <div class="header-wrap">
       <div class="header-inner">
-        <a href="index.html" class="header-brand">
-          <img src="Logo.png" alt="JIT" class="header-logo" />
+        <a href="index.html" class="header-brand" aria-label="JIT home">
+          <img src="Logo.png" alt="JIT" class="header-logo" width="36" height="36" />
           <span class="header-brand-text">JIT</span>
         </a>
-        <nav class="header-nav" id="headerNav">
+
+        <nav class="header-nav" id="headerNav" aria-label="Main navigation">
           <a href="index.html#about" class="nav-item">About</a>
           <a href="index.html#extensions" class="nav-item">Extensions</a>
           <a href="index.html#faq" class="nav-item">FAQ</a>
           <a href="index.html#developer" class="nav-item">Developer</a>
           <a href="index.html#contact" class="nav-item">Contact</a>
         </nav>
-        <a href="extension.html" class="header-pill">Download</a>
-        <button class="header-toggle" id="headerToggle" aria-label="Menu">
+
+        <a href="extension.html" class="header-pill" aria-label="Download extensions">Download</a>
+
+        <button class="header-toggle" id="headerToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- ============ EXTENSIONS PAGE HERO ============ -->
-  <section class="hero" id="top" style="padding:160px 0 80px;">
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top" aria-labelledby="ext-hero-title" style="padding: clamp(120px, 16vh, 160px) 0 clamp(60px, 8vh, 80px);">
+    <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-inner">
-      <h1 class="hero-title">
+      <h1 class="hero-title" id="ext-hero-title">
         All <span class="hero-blue">JIT</span> extensions
       </h1>
       <p class="hero-sub">
@@ -49,12 +160,12 @@
   </section>
 
   <!-- ============ EXTENSIONS LIST ============ -->
-  <section class="extensions" style="padding-top:0;">
+  <section class="extensions" style="padding-top:0;" aria-label="All JIT extensions">
     <div class="container">
       <div class="ext-grid">
         <article class="ext-card">
           <div class="ext-art ext-art-1">
-            <img src="MutedHue/icons/MutedHue.png" alt="MutedHue" class="ext-logo" />
+            <img src="MutedHue/icons/MutedHue.png" alt="MutedHue" class="ext-logo" width="96" height="96" loading="lazy" />
           </div>
           <div class="ext-body">
             <div class="ext-head">
@@ -67,13 +178,13 @@
               <li><strong>Size:</strong> 12 KB</li>
               <li><strong>Updated:</strong> March 2026</li>
             </ul>
-            <a href="https://chromewebstore.google.com" target="_blank" class="ext-link">Add to Chrome &rsaquo;</a>
+            <a href="https://chromewebstore.google.com" target="_blank" rel="noopener" class="ext-link" aria-label="Add MutedHue to Chrome">Add to Chrome &rsaquo;</a>
           </div>
         </article>
 
         <article class="ext-card">
           <div class="ext-art ext-art-2">
-            <img src="Refreshner/icons/Refreshner.png" alt="Refreshner" class="ext-logo" />
+            <img src="Refreshner/icons/Refreshner.png" alt="Refreshner" class="ext-logo" width="96" height="96" loading="lazy" />
           </div>
           <div class="ext-body">
             <div class="ext-head">
@@ -86,13 +197,13 @@
               <li><strong>Size:</strong> 28 KB</li>
               <li><strong>Updated:</strong> May 2026</li>
             </ul>
-            <a href="https://chromewebstore.google.com" target="_blank" class="ext-link">Add to Chrome &rsaquo;</a>
+            <a href="https://chromewebstore.google.com" target="_blank" rel="noopener" class="ext-link" aria-label="Add Refreshner to Chrome">Add to Chrome &rsaquo;</a>
           </div>
         </article>
 
         <article class="ext-card ext-soon">
           <div class="ext-art ext-art-3">
-            <div class="art-dots">
+            <div class="art-dots" aria-hidden="true">
               <span></span><span></span><span></span><span></span>
               <span></span><span></span><span></span><span></span>
               <span></span><span></span><span></span><span></span>
@@ -104,7 +215,7 @@
               <span class="ext-status ext-soon-tag">Coming soon</span>
             </div>
             <p>Something new is brewing in the JIT workshop. Stay tuned for details.</p>
-            <a href="index.html#contact" class="ext-link">Get notified &rsaquo;</a>
+            <a href="index.html#contact" class="ext-link" aria-label="Get notified about new JIT tools">Get notified &rsaquo;</a>
           </div>
         </article>
       </div>
@@ -112,18 +223,20 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img src="Logo.png" alt="JIT" class="footer-logo-img" />
-        <span class="footer-logo">JIT</span>
+        <div class="footer-brand-head">
+          <img src="Logo.png" alt="JIT" class="footer-logo-img" width="44" height="44" />
+          <span class="footer-logo">JIT</span>
+        </div>
         <p>Clean, focused browser extensions built with privacy and purpose. Every tool does one thing well and respects your data.</p>
         <p class="footer-email">Contact: <a href="mailto:iampawansimha.2004@gmail.com">iampawansimha.2004@gmail.com</a></p>
-        <div class="footer-social">
-          <a href="https://github.com/PawanSimha" target="_blank" aria-label="GitHub">GitHub</a>
-          <a href="https://x.com/iampawansimha" target="_blank" aria-label="Twitter">Twitter</a>
+        <nav class="footer-social" aria-label="Social media links">
+          <a href="https://github.com/PawanSimha" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+          <a href="https://x.com/iampawansimha" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>
           <a href="mailto:iampawansimha.2004@gmail.com" aria-label="Email">Email</a>
-        </div>
+        </nav>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -142,9 +255,9 @@
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Cookie Policy</a>
+          <a href="PRIVACY.md">Privacy Policy</a>
+          <a href="PRIVACY.md">Terms of Service</a>
+          <a href="PRIVACY.md">Cookie Policy</a>
         </div>
       </div>
     </div>
@@ -155,5 +268,16 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- ── Cookie Consent Banner ── -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent" aria-hidden="true">
+    <div class="cookie-banner-inner">
+      <p>This site uses minimal cookies to ensure core functionality. No tracking or analytics cookies are used. <a href="PRIVACY.md">Learn more</a>.</p>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-decline" id="cookieDecline" type="button">Decline</button>
+        <button class="cookie-btn cookie-accept" id="cookieAccept" type="button">Accept</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

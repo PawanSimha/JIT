@@ -1,11 +1,169 @@
+<!--
+JIT - Browser Extension Studio
+Copyright (C) 2026  Pawan Simha R
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JIT - Browser Extension Studio</title>
-  <meta name="description" content="JIT builds clean, focused browser extensions. Meet MutedHue and Refreshner." />
-  <link rel="icon" href="Logo.png" />
+
+  <!-- ── Primary Meta ── -->
+  <title>JIT - Browser Extension Studio | Privacy-First Chrome Extensions by Pawan Simha R</title>
+  <meta name="description" content="JIT builds clean, focused browser extensions, MutedHue and Refreshner, with zero data collection, open source code, and a quiet, powerful design philosophy. Download free Chrome extensions built by Pawan Simha R at Sapthagiri NPS University." />
+  <meta name="keywords" content="JIT, browser extensions, Chrome extensions, MutedHue, Refreshner, privacy-first extensions, open source extensions, Pawan Simha, Sapthagiri NPS University, text selection color, auto refresh page monitor" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Pawan Simha R" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="application-name" content="JIT - Browser Extension Studio" />
+  <link rel="canonical" href="https://pawansimha.github.io/JIT/" />
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="JIT - Browser Extension Studio | Privacy-First Chrome Extensions" />
+  <meta property="og:description" content="Clean, focused browser extensions that do one thing well and respect your privacy. MutedHue and Refreshner by Pawan Simha R." />
+  <meta property="og:url" content="https://pawansimha.github.io/JIT/" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="JIT brand logo" />
+  <meta property="og:site_name" content="JIT" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="JIT - Browser Extension Studio" />
+  <meta name="twitter:description" content="Clean, focused browser extensions, MutedHue and Refreshner. Zero trackers, open source, built by Pawan Simha R." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.png" />
+  <meta name="twitter:image:alt" content="JIT logo" />
+
+  <!-- ── AI Crawler Directives ── -->
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large" />
+
+  <!-- ── JSON-LD Schema: Organization + Person + SoftwareApplication ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://github.com/PawanSimha/JIT#organization",
+        "name": "JIT",
+        "description": "A small studio that builds clean, focused browser extensions with zero data collection and open source code.",
+        "url": "https://pawansimha.github.io/JIT/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.png"
+        },
+        "foundingDate": "2026",
+        "founder": {
+          "@id": "https://github.com/PawanSimha/JIT#person"
+        },
+        "sameAs": [
+          "https://github.com/PawanSimha",
+          "https://x.com/iampawansimha",
+          "https://www.linkedin.com/in/pawansimha/"
+        ],
+        "knowsAbout": [
+          "Browser extensions",
+          "Chrome Manifest V3",
+          "Web development",
+          "Privacy-first software",
+          "Platform engineering"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://github.com/PawanSimha/JIT#person",
+        "name": "Pawan Simha R",
+        "description": "Web and App Developer building privacy-first browser extensions at Sapthagiri NPS University.",
+        "url": "https://portfolio-pawansimha.vercel.app",
+        "image": "https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.png",
+        "sameAs": [
+          "https://github.com/PawanSimha",
+          "https://www.linkedin.com/in/pawansimha/",
+          "https://x.com/iampawansimha",
+          "https://me.developers.google.com/u/pawansimha",
+          "https://www.credly.com/users/pawansimha/badges",
+          "https://www.skills.google/public_profiles/9108dded-855b-466a-b261-0a7519d472cf",
+          "https://portfolio-pawansimha.vercel.app"
+        ],
+        "knowsAbout": [
+          "Web development",
+          "App development",
+          "Platform engineering",
+          "Browser extension development",
+          "Chrome Manifest V3"
+        ],
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Sapthagiri NPS University"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://github.com/PawanSimha/JIT#mutedhue",
+        "name": "MutedHue",
+        "applicationCategory": "BrowserExtension",
+        "operatingSystem": "Chrome",
+        "description": "Replaces bright blue text selection with a subtle, adaptive grey highlight on every website. Light and dark mode aware.",
+        "softwareVersion": "1.0.0",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@id": "https://github.com/PawanSimha/JIT#person"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://github.com/PawanSimha/JIT#refreshner",
+        "name": "Refreshner",
+        "applicationCategory": "BrowserExtension",
+        "operatingSystem": "Chrome",
+        "description": "Smart auto-refresh with customizable intervals, keyword page monitoring, live countdown timer, and audio alerts.",
+        "softwareVersion": "1.0.0",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@id": "https://github.com/PawanSimha/JIT#person"
+        },
+        "permissions": ["storage", "alarms", "notifications", "tabs"]
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── Preload critical assets (LCP + fonts) ── -->
+  <link rel="preload" href="Logo.png" as="image" />
+  <link rel="preload" href="fonts.css" as="style" />
+  <link rel="preload" href="https://fonts.gstatic.com/s/googlesans/v69/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjIUvQ.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="https://fonts.gstatic.com/s/googlesanstext/v25/5aUu9-KzpRiLCAt4Unrc-xIKmCU5qEp2iw.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- ── Favicon set ── -->
+  <link rel="icon" href="Logo.png" sizes="32x32" />
+  <link rel="icon" href="Logo.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="Logo.png" sizes="180x180" />
+  <link rel="manifest" href="site.webmanifest" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="fonts.css" />
@@ -14,22 +172,25 @@
 <body>
 
   <!-- ============ HEADER ============ -->
-  <header class="header" id="header">
+  <header class="header" id="header" role="banner">
     <div class="header-wrap">
       <div class="header-inner">
-        <a href="index.html" class="header-brand">
-          <img src="Logo.png" alt="JIT" class="header-logo" />
+        <a href="index.html" class="header-brand" aria-label="JIT home">
+          <img src="Logo.png" alt="JIT" class="header-logo" width="36" height="36" />
           <span class="header-brand-text">JIT</span>
         </a>
-        <nav class="header-nav" id="headerNav">
+
+        <nav class="header-nav" id="headerNav" aria-label="Main navigation">
           <a href="index.html#about" class="nav-item">About</a>
           <a href="index.html#extensions" class="nav-item">Extensions</a>
           <a href="index.html#faq" class="nav-item">FAQ</a>
           <a href="index.html#developer" class="nav-item">Developer</a>
           <a href="index.html#contact" class="nav-item">Contact</a>
         </nav>
-        <a href="extension.html" class="header-pill">Download</a>
-        <button class="header-toggle" id="headerToggle" aria-label="Menu">
+
+        <a href="extension.html" class="header-pill" aria-label="Download extensions">Download</a>
+
+        <button class="header-toggle" id="headerToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -37,10 +198,10 @@
   </header>
 
   <!-- ============ HERO ============ -->
-  <section class="hero" id="top">
-    <div class="hero-grid"></div>
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-inner">
-      <h1 class="hero-title">
+      <h1 class="hero-title" id="hero-title">
         Power your everyday with a<br />
         <span class="hero-blue">JIT</span> plan
       </h1>
@@ -49,41 +210,47 @@
         No bloat, no trackers, no noise.
       </p>
       <div class="hero-actions">
-        <a href="extension.html" class="btn btn-blue">
+        <a href="extension.html" class="btn btn-blue" aria-label="Download all JIT extensions">
           Download extensions
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ============ ABOUT ============ -->
-  <section class="about" id="about">
+  <section class="about" id="about" aria-labelledby="about-title">
     <div class="container about-inner">
-      <div class="about-text">
+      <div class="about-text-top">
         <p class="eyebrow">About</p>
-        <h2 class="section-title section-title-left">What <span class="text-gradient">JIT</span> stands for</h2>
+        <h2 class="section-title section-title-left" id="about-title">What is <span class="text-gradient">JIT</span>?</h2>
         <p class="about-lead">
-          JIT is a small studio that builds clean, focused browser extensions. Every tool we ship is
-          crafted with the same principles: do one thing well, respect the user, and stay out of the way.
+          <strong>JIT is a small studio that builds clean, focused browser extensions with zero data collection.</strong>
+          Every tool we ship is crafted with the same principles: do one thing well, respect the user, and stay out of the way. All extensions are free, open source, and require no account or sign-up.
         </p>
+      </div>
+      <div class="about-art">
+        <img src="Logo.png" alt="JIT logo" class="about-logo" width="300" height="300" />
+      </div>
+      <div class="about-text-bottom">
+        <h3 style="font-size:var(--fs-body);font-weight:var(--fw-bold);color:var(--text-1);margin-bottom:16px;">What are JIT's core principles?</h3>
         <ul class="about-feats">
           <li>
-            <span class="about-icon">◎</span>
+            <span class="about-icon" aria-hidden="true">◎</span>
             <div>
               <strong>Privacy first.</strong>
               <p>Zero data leaves your browser. No analytics, no trackers, no servers.</p>
             </div>
           </li>
           <li>
-            <span class="about-icon">◇</span>
+            <span class="about-icon" aria-hidden="true">◇</span>
             <div>
               <strong>Open source.</strong>
               <p>Every extension is transparent, auditable, and free forever.</p>
             </div>
           </li>
           <li>
-            <span class="about-icon">◈</span>
+            <span class="about-icon" aria-hidden="true">◈</span>
             <div>
               <strong>Quietly powerful.</strong>
               <p>Small tools that fit naturally into how you already work.</p>
@@ -91,23 +258,23 @@
           </li>
         </ul>
       </div>
-      <div class="about-art">
-        <img src="Logo.png" alt="JIT" class="about-logo" />
-      </div>
     </div>
   </section>
 
   <!-- ============ EXTENSIONS ============ -->
-  <section class="extensions" id="extensions">
+  <section class="extensions" id="extensions" aria-labelledby="ext-title">
     <div class="container">
       <p class="eyebrow">Extensions</p>
-      <h2 class="section-title">Tools from the <span class="text-gradient">workshop</span></h2>
-      <p class="section-sub">Every JIT extension is built with privacy, performance, and purpose in mind.</p>
+      <h2 class="section-title" id="ext-title">What tools does <span class="text-gradient">JIT</span> offer?</h2>
+      <p class="section-sub">
+        <strong>JIT offers two free Chrome extensions with more in development.</strong>
+        MutedHue replaces harsh blue selection with adaptive grey, while Refreshner auto-refreshes pages and monitors keywords. Both are open source and collect zero data.
+      </p>
 
       <div class="ext-grid">
         <article class="ext-card">
           <div class="ext-art ext-art-1">
-            <img src="MutedHue/icons/MutedHue.png" alt="MutedHue" class="ext-logo" />
+            <img src="MutedHue/icons/MutedHue.png" alt="MutedHue" class="ext-logo" width="96" height="96" loading="lazy" />
           </div>
           <div class="ext-body">
             <div class="ext-head">
@@ -115,13 +282,13 @@
               <span class="ext-status ext-live">Published</span>
             </div>
             <p>Replaces harsh blue text selection with a subtle, adaptive grey highlight on every website. Gentle on the eyes, beautiful on every theme.</p>
-            <a href="#" class="ext-link">Learn more &rsaquo;</a>
+            <a href="#" class="ext-link" aria-label="Learn more about MutedHue">Learn more &rsaquo;</a>
           </div>
         </article>
 
         <article class="ext-card">
           <div class="ext-art ext-art-2">
-            <img src="Refreshner/icons/Refreshner.png" alt="Refreshner" class="ext-logo" />
+            <img src="Refreshner/icons/Refreshner.png" alt="Refreshner" class="ext-logo" width="96" height="96" loading="lazy" />
           </div>
           <div class="ext-body">
             <div class="ext-head">
@@ -129,13 +296,13 @@
               <span class="ext-status ext-live">Published</span>
             </div>
             <p>Smart auto-refresh with customizable intervals, keyword page monitoring, live countdown timer, and audio alerts when matches are found.</p>
-            <a href="#" class="ext-link">Learn more &rsaquo;</a>
+            <a href="#" class="ext-link" aria-label="Learn more about Refreshner">Learn more &rsaquo;</a>
           </div>
         </article>
 
         <article class="ext-card ext-soon">
           <div class="ext-art ext-art-3">
-            <div class="art-dots">
+            <div class="art-dots" aria-hidden="true">
               <span></span><span></span><span></span><span></span>
               <span></span><span></span><span></span><span></span>
               <span></span><span></span><span></span><span></span>
@@ -147,7 +314,7 @@
               <span class="ext-status ext-soon-tag">Coming soon</span>
             </div>
             <p>Something new is brewing in the JIT workshop. Stay tuned.</p>
-            <a href="#contact" class="ext-link">Get notified &rsaquo;</a>
+            <a href="#contact" class="ext-link" aria-label="Get notified about new tools">Get notified &rsaquo;</a>
           </div>
         </article>
       </div>
@@ -155,66 +322,66 @@
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section class="faq" id="faq">
+  <section class="faq" id="faq" aria-labelledby="faq-title">
     <div class="container">
       <p class="eyebrow">FAQ</p>
-      <h2 class="section-title">Got <span class="text-gradient">questions</span>?</h2>
+      <h2 class="section-title" id="faq-title">Got <span class="text-gradient">questions</span>?</h2>
       <p class="section-sub">We have answers. Here are the most common ones.</p>
 
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-q">
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
             <span>What is JIT?</span>
-            <span class="faq-arrow"></span>
+            <span class="faq-arrow" aria-hidden="true"></span>
           </button>
           <div class="faq-a"><div class="faq-a-inner"><p>A small studio where we build clean, focused browser extensions. No bloat, no trackers, just tools that do one thing well.</p></div></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
             <span>Are the extensions free?</span>
-            <span class="faq-arrow"></span>
+            <span class="faq-arrow" aria-hidden="true"></span>
           </button>
           <div class="faq-a"><div class="faq-a-inner"><p>Yes. Every JIT extension is 100% free, open-source, and will always remain so.</p></div></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
             <span>Do these extensions collect data?</span>
-            <span class="faq-arrow"></span>
+            <span class="faq-arrow" aria-hidden="true"></span>
           </button>
           <div class="faq-a"><div class="faq-a-inner"><p>Never. Zero data leaves your browser. No analytics, no trackers, no servers. Privacy is non-negotiable.</p></div></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
             <span>How do I install an extension?</span>
-            <span class="faq-arrow"></span>
+            <span class="faq-arrow" aria-hidden="true"></span>
           </button>
           <div class="faq-a"><div class="faq-a-inner"><p>Each extension is published on the Chrome Web Store. Click "Add to Chrome" from the store page and it installs in one click.</p></div></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
             <span>Will there be more extensions?</span>
-            <span class="faq-arrow"></span>
+            <span class="faq-arrow" aria-hidden="true"></span>
           </button>
           <div class="faq-a"><div class="faq-a-inner"><p>Absolutely. New tools are always in progress. The JIT workshop is always growing.</p></div></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
             <span>Can I contribute or request a feature?</span>
-            <span class="faq-arrow"></span>
+            <span class="faq-arrow" aria-hidden="true"></span>
           </button>
           <div class="faq-a"><div class="faq-a-inner"><p>Yes! JIT is open source. You can submit feature requests, report bugs, or contribute code on our GitHub. We welcome community input.</p></div></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
             <span>Do I need an account to use JIT extensions?</span>
-            <span class="faq-arrow"></span>
+            <span class="faq-arrow" aria-hidden="true"></span>
           </button>
           <div class="faq-a"><div class="faq-a-inner"><p>No account needed. Every JIT extension works right after installation, no sign-up, no login, no account required.</p></div></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q">
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false">
             <span>What browsers are supported?</span>
-            <span class="faq-arrow"></span>
+            <span class="faq-arrow" aria-hidden="true"></span>
           </button>
           <div class="faq-a"><div class="faq-a-inner"><p>Currently JIT extensions are built for Chromium-based browsers - Chrome, Edge, Brave, and Opera. Firefox support is in the works.</p></div></div>
         </div>
@@ -223,46 +390,49 @@
   </section>
 
   <!-- ============ DEVELOPER ============ -->
-  <section class="developer" id="developer">
+  <section class="developer" id="developer" aria-labelledby="dev-title">
     <div class="container">
       <p class="eyebrow">Developer</p>
-      <h2 class="section-title">Built by<br /><span class="text-gradient">Pawan Simha R</span></h2>
-      <p class="section-sub dev-sub">Web and App Developer</p>
-      <p class="dev-bio">Building tools that make daily digital experiences quieter, faster, and more private. This project is part of a Platform Engineering exploration at Sapthagiri NPS University.</p>
-      <div class="dev-links">
-        <a href="https://github.com/PawanSimha" target="_blank" class="dev-link">⌂ GitHub</a>
-        <a href="https://www.linkedin.com/in/pawansimha/" target="_blank" class="dev-link">◎ LinkedIn</a>
-        <a href="https://x.com/iampawansimha" target="_blank" class="dev-link">✕ X / Twitter</a>
-        <a href="https://me.developers.google.com/u/pawansimha" target="_blank" class="dev-link">◆ Google Dev</a>
-        <a href="https://www.credly.com/users/pawansimha/badges" target="_blank" class="dev-link">◈ Credly</a>
-        <a href="https://www.skills.google/public_profiles/9108dded-855b-466a-b261-0a7519d472cf" target="_blank" class="dev-link">⬡ Google Skills</a>
-        <a href="https://portfolio-pawansimha.vercel.app" target="_blank" class="dev-link dev-link-full">◈ Portfolio</a>
-      </div>
+      <h2 class="section-title" id="dev-title">Who built <span class="text-gradient">JIT</span>?</h2>
+      <p class="section-sub dev-sub"><strong>Pawan Simha R</strong> - Web and App Developer</p>
+      <p class="dev-bio">
+        <strong>JIT is built by Pawan Simha R, a web and app developer exploring Platform Engineering at Sapthagiri NPS University.</strong>
+        He builds tools that make daily digital experiences quieter, faster, and more private. His work spans browser extensions, web applications, and open source software. Connect with him through the links below.
+      </p>
+      <nav class="dev-links" aria-label="Developer profiles and links">
+        <a href="https://github.com/PawanSimha" target="_blank" rel="noopener" class="dev-link" aria-label="GitHub profile">⌂ GitHub</a>
+        <a href="https://www.linkedin.com/in/pawansimha/" target="_blank" rel="noopener" class="dev-link" aria-label="LinkedIn profile">◎ LinkedIn</a>
+        <a href="https://x.com/iampawansimha" target="_blank" rel="noopener" class="dev-link" aria-label="X / Twitter profile">✕ X / Twitter</a>
+        <a href="https://me.developers.google.com/u/pawansimha" target="_blank" rel="noopener" class="dev-link" aria-label="Google Developer profile">◆ Google Dev</a>
+        <a href="https://www.credly.com/users/pawansimha/badges" target="_blank" rel="noopener" class="dev-link" aria-label="Credly badges">◈ Credly</a>
+        <a href="https://www.skills.google/public_profiles/9108dded-855b-466a-b261-0a7519d472cf" target="_blank" rel="noopener" class="dev-link" aria-label="Google Skills profile">⬡ Google Skills</a>
+        <a href="https://portfolio-pawansimha.vercel.app" target="_blank" rel="noopener" class="dev-link dev-link-full" aria-label="Portfolio website">◈ Portfolio</a>
+      </nav>
     </div>
   </section>
 
   <!-- ============ CONTACT ============ -->
-  <section class="contact" id="contact">
+  <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="container">
       <div class="contact-card">
         <p class="eyebrow">Contact</p>
-        <h2 class="section-title">Get in <span class="text-gradient">touch</span></h2>
+        <h2 class="section-title" id="contact-title">Get in <span class="text-gradient">touch</span></h2>
         <p class="section-sub">Feedback, ideas, or just saying hello, we'd love to hear from you.</p>
 
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/pawansimha.pc@gmail.com" method="POST">
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/pawansimha.pc@gmail.com" method="POST" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" id="name" placeholder="Your name" required />
+              <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" placeholder="you@example.com" required />
+              <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
             </div>
           </div>
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" rows="4" placeholder="Tell us what's on your mind..." required></textarea>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us what's on your mind..." required></textarea>
           </div>
           <button type="submit" class="btn btn-blue">Send message</button>
         </form>
@@ -271,18 +441,20 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img src="Logo.png" alt="JIT" class="footer-logo-img" />
-        <span class="footer-logo">JIT</span>
+        <div class="footer-brand-head">
+          <img src="Logo.png" alt="JIT" class="footer-logo-img" width="44" height="44" />
+          <span class="footer-logo">JIT</span>
+        </div>
         <p>Clean, focused browser extensions built with privacy and purpose. Every tool does one thing well and respects your data.</p>
         <p class="footer-email">Contact: <a href="mailto:iampawansimha.2004@gmail.com">iampawansimha.2004@gmail.com</a></p>
-        <div class="footer-social">
-          <a href="https://github.com/PawanSimha" target="_blank" aria-label="GitHub">GitHub</a>
-          <a href="https://x.com/iampawansimha" target="_blank" aria-label="Twitter">Twitter</a>
+        <nav class="footer-social" aria-label="Social media links">
+          <a href="https://github.com/PawanSimha" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+          <a href="https://x.com/iampawansimha" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>
           <a href="mailto:iampawansimha.2004@gmail.com" aria-label="Email">Email</a>
-        </div>
+        </nav>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -301,9 +473,9 @@
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Cookie Policy</a>
+          <a href="PRIVACY.md">Privacy Policy</a>
+          <a href="PRIVACY.md">Terms of Service</a>
+          <a href="PRIVACY.md">Cookie Policy</a>
         </div>
       </div>
     </div>
@@ -314,5 +486,16 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- ── Cookie Consent Banner ── -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent" aria-hidden="true">
+    <div class="cookie-banner-inner">
+      <p>This site uses minimal cookies to ensure core functionality. No tracking or analytics cookies are used. <a href="PRIVACY.md">Learn more</a>.</p>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-decline" id="cookieDecline" type="button">Decline</button>
+        <button class="cookie-btn cookie-accept" id="cookieAccept" type="button">Accept</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
