@@ -73,7 +73,7 @@ JIT/
 ├── script.js                   # Vanilla JS IIFE — scroll reset, hamburger toggle, FAQ accordion,
 │                               # IntersectionObserver reveal, contact form submit, cookie consent
 │
-├── Logo.png                    # Brand logo — used in nav (36px), about section (300px), footer (44px),
+├── Logo.webp                  # Brand logo — used in nav (36px), about section (300px), footer (44px),
 │                               # favicon (32/192/180), apple-touch-icon, OG image, JSON-LD image
 │
 ├── MutedHue/                   # Chrome Extension MV3 — adaptive text selection color replacer
@@ -148,7 +148,7 @@ JIT/
 - `[x]` Open Graph + Twitter Card meta tags (full set on both HTML pages)
 - `[x]` SEO/GEO meta tags (keywords, robots, canonical, googlebot directives)
 - `[x]` Favicon set (32, 192, apple-touch-icon 180) + `site.webmanifest`
-- `[x]` Preload critical assets (Logo.png, Google Sans woff2 files, fonts.css)
+- `[x]` Preload critical assets (Logo.webp, Google Sans woff2 files, fonts.css)
 - `[x]` `robots.txt` with 2026 AI crawler separation (search allowed, training scrapers blocked)
 - `[x]` `sitemap.xml` (2 URLs with priority + lastmod)
 - `[x]` `_headers` with security headers (CSP, HSTS, X-Frame-Options, Permissions-Policy)
