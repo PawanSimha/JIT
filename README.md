@@ -1,4 +1,4 @@
-<h1 align="center">⚡ JIT — Browser Extension Studio</h1>
+<h1 align="center">⚡ JIT - Browser Extension Studio</h1>
 <p align="center">
   <em>Clean, focused browser extensions built with privacy and purpose.</em>
 </p>
@@ -6,7 +6,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/status-active-brightgreen" alt="Status" />
   <img src="https://img.shields.io/badge/stack-vanilla%20JS%20%7C%20CSS3%20%7C%20HTML5-blue" alt="Stack" />
-  <img src="https://img.shields.io/badge/license-MIT-yellow" alt="License" />
+  <img src="https://img.shields.io/badge/license-GPLv3-blue" alt="License" />
   <img src="https://img.shields.io/badge/PRs-welcome-orange" alt="PRs" />
 </p>
 
@@ -106,9 +106,16 @@ JIT/
 │   ├── popup.html / popup.css / popup.js  # Timer UI
 │   └── icons/Refreshner.png
 │
-├── header.html                # (partial — kept for reference)
-├── footer.html                # (partial — kept for reference)
-└── include.js                 # (partial — kept for reference)
+├── 404.html                   # Branded error page
+├── robots.txt                 # AI crawler directives
+├── sitemap.xml                # SEO sitemap
+├── _headers                   # Security headers (GitHub Pages)
+├── site.webmanifest           # PWA manifest
+├── .gitignore
+├── LICENSE                    # GNU GPLv3
+├── PRIVACY.md                 # Privacy policy
+├── PRD.md                     # Product requirements doc
+│
 ```
 
 ---
@@ -173,9 +180,8 @@ For feature requests or bugs, use the contact form on the site or email directly
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.
-
-> No `LICENSE` file was found in the repository — MIT is assumed. See [choosealicense.com](https://choosealicense.com) for options.
+This project is licensed under the **GNU General Public License v3.0**.  
+See the [LICENSE](LICENSE) file for full terms.
 
 ---
 

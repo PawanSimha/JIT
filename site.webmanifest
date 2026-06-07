@@ -1,7 +1,7 @@
 {
   "name": "JIT - Browser Extension Studio",
   "short_name": "JIT",
-  "start_url": "/",
+  "start_url": "/JIT/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",

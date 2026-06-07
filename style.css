@@ -725,9 +725,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 /* Desktop (≥1025px) */
-@media (min-width: 1025px) {
-  .hero { padding: clamp(120px, 16vh, 180px) 0 clamp(80px, 10vh, 120px); }
-}
 
 /* Ultra-wide (≥1440px) */
 @media (min-width: 1440px) {
