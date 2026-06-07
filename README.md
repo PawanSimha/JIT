@@ -1,4 +1,9 @@
-<h1 align="center">⚡ JIT - Browser Extension Studio</h1>
+<p align="center">
+  <img src="Logo.webp" alt="JIT" width="80" />
+</p>
+
+<h1 align="center">JIT - Browser Extension Studio</h1>
+
 <p align="center">
   <em>Clean, focused browser extensions built with privacy and purpose.</em>
 </p>
@@ -8,6 +13,10 @@
   <img src="https://img.shields.io/badge/stack-vanilla%20JS%20%7C%20CSS3%20%7C%20HTML5-blue" alt="Stack" />
   <img src="https://img.shields.io/badge/license-GPLv3-blue" alt="License" />
   <img src="https://img.shields.io/badge/PRs-welcome-orange" alt="PRs" />
+</p>
+
+<p align="center">
+  <img src="Logo.webp" alt="JIT - Browser Extension Studio" width="800" style="border-radius: 12px;" />
 </p>
 
 ---
