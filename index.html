@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JIT — Browser Extension Studio</title>
+  <title>JIT - Browser Extension Studio</title>
   <meta name="description" content="JIT builds clean, focused browser extensions. Meet MutedHue and Refreshner." />
   <link rel="icon" href="Logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,12 +22,13 @@
           <span class="header-brand-text">JIT</span>
         </a>
         <nav class="header-nav" id="headerNav">
-          <a href="extension.html" class="nav-item">Extensions</a>
           <a href="index.html#about" class="nav-item">About</a>
+          <a href="index.html#extensions" class="nav-item">Extensions</a>
           <a href="index.html#faq" class="nav-item">FAQ</a>
+          <a href="index.html#developer" class="nav-item">Developer</a>
           <a href="index.html#contact" class="nav-item">Contact</a>
         </nav>
-        <a href="index.html#contact" class="header-pill">Sign up</a>
+        <a href="extension.html" class="header-pill">Download</a>
         <button class="header-toggle" id="headerToggle" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -48,73 +49,10 @@
         No bloat, no trackers, no noise.
       </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-blue">
-          Sign up for a JIT plan
+        <a href="extension.html" class="btn btn-blue">
+          Download extensions
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EXTENSIONS ============ -->
-  <section class="extensions" id="extensions">
-    <div class="container">
-      <p class="eyebrow">Extensions</p>
-      <h2 class="section-title">Tools from the <span class="text-gradient">workshop</span></h2>
-      <p class="section-sub">Every JIT extension is built with privacy, performance, and purpose in mind.</p>
-
-      <div class="ext-grid">
-        <article class="ext-card">
-          <div class="ext-art ext-art-1">
-            <div class="art-shape shape-1"></div>
-            <div class="art-shape shape-2"></div>
-            <div class="art-shape shape-3"></div>
-          </div>
-          <div class="ext-body">
-            <div class="ext-head">
-              <h3>MutedHue</h3>
-              <span class="ext-status ext-live">Published</span>
-            </div>
-            <p>Replaces harsh blue text selection with a subtle, adaptive grey highlight on every website. Gentle on the eyes, beautiful on every theme.</p>
-            <a href="#" class="ext-link">Learn more &rsaquo;</a>
-          </div>
-        </article>
-
-        <article class="ext-card">
-          <div class="ext-art ext-art-2">
-            <div class="art-ring"></div>
-            <div class="art-tick t1"></div>
-            <div class="art-tick t2"></div>
-            <div class="art-tick t3"></div>
-            <div class="art-center">↻</div>
-          </div>
-          <div class="ext-body">
-            <div class="ext-head">
-              <h3>Refreshner</h3>
-              <span class="ext-status ext-live">Published</span>
-            </div>
-            <p>Smart auto-refresh with customizable intervals, keyword page monitoring, live countdown timer, and audio alerts when matches are found.</p>
-            <a href="#" class="ext-link">Learn more &rsaquo;</a>
-          </div>
-        </article>
-
-        <article class="ext-card ext-soon">
-          <div class="ext-art ext-art-3">
-            <div class="art-dots">
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-          <div class="ext-body">
-            <div class="ext-head">
-              <h3>Next Tool</h3>
-              <span class="ext-status ext-soon-tag">Coming soon</span>
-            </div>
-            <p>Something new is brewing in the JIT workshop. Stay tuned.</p>
-            <a href="#contact" class="ext-link">Get notified &rsaquo;</a>
-          </div>
-        </article>
       </div>
     </div>
   </section>
@@ -154,9 +92,64 @@
         </ul>
       </div>
       <div class="about-art">
-        <div class="about-orb"></div>
-        <div class="about-orb about-orb-2"></div>
-        <div class="about-mark">JIT</div>
+        <img src="Logo.png" alt="JIT" class="about-logo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXTENSIONS ============ -->
+  <section class="extensions" id="extensions">
+    <div class="container">
+      <p class="eyebrow">Extensions</p>
+      <h2 class="section-title">Tools from the <span class="text-gradient">workshop</span></h2>
+      <p class="section-sub">Every JIT extension is built with privacy, performance, and purpose in mind.</p>
+
+      <div class="ext-grid">
+        <article class="ext-card">
+          <div class="ext-art ext-art-1">
+            <img src="MutedHue/icons/MutedHue.png" alt="MutedHue" class="ext-logo" />
+          </div>
+          <div class="ext-body">
+            <div class="ext-head">
+              <h3>MutedHue</h3>
+              <span class="ext-status ext-live">Published</span>
+            </div>
+            <p>Replaces harsh blue text selection with a subtle, adaptive grey highlight on every website. Gentle on the eyes, beautiful on every theme.</p>
+            <a href="#" class="ext-link">Learn more &rsaquo;</a>
+          </div>
+        </article>
+
+        <article class="ext-card">
+          <div class="ext-art ext-art-2">
+            <img src="Refreshner/icons/Refreshner.png" alt="Refreshner" class="ext-logo" />
+          </div>
+          <div class="ext-body">
+            <div class="ext-head">
+              <h3>Refreshner</h3>
+              <span class="ext-status ext-live">Published</span>
+            </div>
+            <p>Smart auto-refresh with customizable intervals, keyword page monitoring, live countdown timer, and audio alerts when matches are found.</p>
+            <a href="#" class="ext-link">Learn more &rsaquo;</a>
+          </div>
+        </article>
+
+        <article class="ext-card ext-soon">
+          <div class="ext-art ext-art-3">
+            <div class="art-dots">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="ext-body">
+            <div class="ext-head">
+              <h3>Next Tool</h3>
+              <span class="ext-status ext-soon-tag">Coming soon</span>
+            </div>
+            <p>Something new is brewing in the JIT workshop. Stay tuned.</p>
+            <a href="#contact" class="ext-link">Get notified &rsaquo;</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -174,7 +167,7 @@
             <span>What is JIT?</span>
             <span class="faq-arrow"></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner"><p>A small studio where we build clean, focused browser extensions. No bloat, no trackers — just tools that do one thing well.</p></div></div>
+          <div class="faq-a"><div class="faq-a-inner"><p>A small studio where we build clean, focused browser extensions. No bloat, no trackers, just tools that do one thing well.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">
@@ -216,15 +209,34 @@
             <span>Do I need an account to use JIT extensions?</span>
             <span class="faq-arrow"></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner"><p>No account needed. Every JIT extension works right after installation — no sign-up, no login, no account required.</p></div></div>
+          <div class="faq-a"><div class="faq-a-inner"><p>No account needed. Every JIT extension works right after installation, no sign-up, no login, no account required.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">
             <span>What browsers are supported?</span>
             <span class="faq-arrow"></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner"><p>Currently JIT extensions are built for Chromium-based browsers — Chrome, Edge, Brave, and Opera. Firefox support is in the works.</p></div></div>
+          <div class="faq-a"><div class="faq-a-inner"><p>Currently JIT extensions are built for Chromium-based browsers - Chrome, Edge, Brave, and Opera. Firefox support is in the works.</p></div></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DEVELOPER ============ -->
+  <section class="developer" id="developer">
+    <div class="container">
+      <p class="eyebrow">Developer</p>
+      <h2 class="section-title">Built by<br /><span class="text-gradient">Pawan Simha R</span></h2>
+      <p class="section-sub dev-sub">Web and App Developer</p>
+      <p class="dev-bio">Building tools that make daily digital experiences quieter, faster, and more private. This project is part of a Platform Engineering exploration at Sapthagiri NPS University.</p>
+      <div class="dev-links">
+        <a href="https://github.com/PawanSimha" target="_blank" class="dev-link">⌂ GitHub</a>
+        <a href="https://www.linkedin.com/in/pawansimha/" target="_blank" class="dev-link">◎ LinkedIn</a>
+        <a href="https://x.com/iampawansimha" target="_blank" class="dev-link">✕ X / Twitter</a>
+        <a href="https://me.developers.google.com/u/pawansimha" target="_blank" class="dev-link">◆ Google Dev</a>
+        <a href="https://www.credly.com/users/pawansimha/badges" target="_blank" class="dev-link">◈ Credly</a>
+        <a href="https://www.skills.google/public_profiles/9108dded-855b-466a-b261-0a7519d472cf" target="_blank" class="dev-link">⬡ Google Skills</a>
+        <a href="https://portfolio-pawansimha.vercel.app" target="_blank" class="dev-link dev-link-full">◈ Portfolio</a>
       </div>
     </div>
   </section>
@@ -235,9 +247,9 @@
       <div class="contact-card">
         <p class="eyebrow">Contact</p>
         <h2 class="section-title">Get in <span class="text-gradient">touch</span></h2>
-        <p class="section-sub">Feedback, ideas, or just saying hello — we'd love to hear from you.</p>
+        <p class="section-sub">Feedback, ideas, or just saying hello, we'd love to hear from you.</p>
 
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/pawansimha.pc@gmail.com" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label for="name">Name</label>
@@ -265,18 +277,21 @@
         <img src="Logo.png" alt="JIT" class="footer-logo-img" />
         <span class="footer-logo">JIT</span>
         <p>Clean, focused browser extensions built with privacy and purpose. Every tool does one thing well and respects your data.</p>
+        <p class="footer-email">Contact: <a href="mailto:iampawansimha.2004@gmail.com">iampawansimha.2004@gmail.com</a></p>
         <div class="footer-social">
-          <a href="#" aria-label="GitHub">GitHub</a>
-          <a href="#" aria-label="Twitter">Twitter</a>
-          <a href="#" aria-label="Email">Email</a>
+          <a href="https://github.com/PawanSimha" target="_blank" aria-label="GitHub">GitHub</a>
+          <a href="https://x.com/iampawansimha" target="_blank" aria-label="Twitter">Twitter</a>
+          <a href="mailto:iampawansimha.2004@gmail.com" aria-label="Email">Email</a>
         </div>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
           <h4>Product</h4>
-          <a href="extension.html">Extensions</a>
           <a href="index.html#about">About</a>
+          <a href="index.html#extensions">Extensions</a>
           <a href="index.html#faq">FAQ</a>
+          <a href="index.html#developer">Developer</a>
+          <a href="index.html#contact">Contact</a>
         </div>
         <div class="footer-col">
           <h4>Company</h4>

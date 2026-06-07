@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ── Scroll to top on refresh ──
+  window.scrollTo(0, 0);
+
   // ── FAQ accordion ──
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -25,16 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
       const btn = e.target.querySelector('button');
-      const orig = btn.textContent;
-      btn.textContent = 'Sent!';
-      btn.style.opacity = '0.7';
-      setTimeout(() => {
-        e.target.reset();
-        btn.textContent = orig;
-        btn.style.opacity = '1';
-      }, 2200);
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
     });
   }
 
