@@ -187,5 +187,5 @@ No other API endpoints — the site is fully static.
 <p align="center">
   <b>Pawan Simha R</b>
   <br />
-  <sub>Built with Next.js 16 · React 19 · Tailwind CSS v4</sub>
+  <sub>Built with vanilla HTML5 · CSS3 · JavaScript (ES6)</sub>
 </p>
