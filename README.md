@@ -171,27 +171,21 @@ No other API endpoints — the site is fully static.
 
 ---
 
-## 👩‍💻 Developer Experience
+## Links
 
-| Command | Description |
-|---------|-------------|
-| `open index.html` | View the landing page |
-| `open extension.html` | View extensions catalog |
-| Load unpacked in Chrome | Test extensions locally |
-
-**Contributions are welcome!**  
-Open an issue or PR on [GitHub](https://github.com/PawanSimha/JIT).  
-For feature requests or bugs, use the contact form on the site or email directly.
-
----
-
-## 📄 License
-
-This project is licensed under the **GNU General Public License v3.0**.  
-See the [LICENSE](LICENSE) file for full terms.
+| Platform | URL |
+|----------|-----|
+| **GitHub** | [github.com/PawanSimha](https://github.com/PawanSimha) |
+| **LinkedIn** | [linkedin.com/in/pawansimha](https://www.linkedin.com/in/pawansimha) |
+| **X / Twitter** | [x.com/pawansimha](https://x.com/pawansimha) |
+| **Google Developer** | [g.dev/pawansimha](https://g.dev/pawansimha) |
+| **Google Skills Profile** | [skills.google.com/public_profiles/...](https://www.skills.google.com/public_profiles/9108dded-855b-466a-b261-0a7519d472cf) |
+| **Credly Badges** | [credly.com/users/pawansimha/badges](https://www.credly.com/users/pawansimha/badges) |
 
 ---
 
 <p align="center">
-  <sub>Built by <a href="https://portfolio-pawansimha.vercel.app">Pawan Simha R</a> · Platform Engineering · Sapthagiri NPS University</sub>
+  <b>Pawan Simha R</b>
+  <br />
+  <sub>Built with Next.js 16 · React 19 · Tailwind CSS v4</sub>
 </p>
