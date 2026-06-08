@@ -67,17 +67,19 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
 | Refreshner — countdown timer in popup | SVG progress ring | ✅ Shipped |
 | Marketing website — landing page | `index.html` | ✅ Shipped |
 | Marketing website — extensions listing page | `extension.html` | ✅ Shipped |
+| Marketing website — extension detail pages | `descriptions/MutedHue.html`, `descriptions/Refreshner.html` | ✅ Shipped |
+| ZIP download + install modal for Developer mode | `MutedHue.zip`, `Refreshner.zip` + modal | ✅ Shipped |
 | FAQ accordion (8 questions) | `script.js` + HTML | ✅ Shipped |
 | Contact form → email (FormSubmit) | POST to `pawansimha.pc@gmail.com` | ✅ Shipped |
 | Developer portfolio section (7 social links) | `.dev-links` grid | ✅ Shipped |
-| Responsive dark-theme design system | `style.css` (~808 lines) | ✅ Shipped |
+| Responsive dark-theme design system | `style.css` (~1140 lines) | ✅ Shipped |
 
 ### P1 — Should Have (high priority, not yet complete)
 
 | Feature | Rationale |
 |---|---|
 | **Chrome Web Store publishing** | Both extensions are fully coded but not yet submitted to CWS |
-| **Privacy Policy / Terms of Service pages** | Footer links currently point to `#` placeholders — needed before CWS submission |
+| **Privacy Policy / Terms of Service pages** | Footer links currently point to PRIVACY.md placeholders — needed before CWS submission |
 | **Thank-you / redirect page after form submission** | Currently button just shows "Sending…" with no success confirmation |
 | **Firefox (WebExtension) port** | MutedHue CSS-only port is trivial; Refreshner needs `browser.alarms` & `browser.notifications` adaptation |
 
@@ -114,10 +116,14 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
 ```
 1. User lands on JIT website (index.html)
 2. Reads hero headline → understands value proposition
-3. Clicks "Download" in nav or "Download extensions" CTA
-4. Lands on extension.html → sees MutedHue card
-5. Clicks "Add to Chrome" → navigated to Chrome Web Store
-6. Installs extension → prompt says "Read and change your browsing data" (MV3, all_urls)
+3. Clicks "Learn More" on MutedHue card or "Download" in nav
+4. Lands on descriptions/MutedHue.html or extension.html
+5. Clicks "Download Extension" / "Add to Chrome" → ZIP downloads
+6. Install modal appears with step-by-step "Load unpacked" guide:
+   a. Extract ZIP to a folder
+   b. Open chrome://extensions
+   c. Enable Developer mode
+   d. Click Load unpacked → select extracted folder
 7. MutedHue immediately activates on every site:
    a. Injects <style data-mutedhue>
    b. Computes body background luminance
@@ -126,10 +132,14 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
 8. User forgets extension exists — selection highlight is now consistently subtle everywhere
 ```
 
-### Secondary Flow — Monitoring a Page with Refreshner
+### Secondary Flow — Installing & Using Refreshner
 
 ```
-1. User opens Refreshner popup on target tab
+1. User lands on extension.html or descriptions/Refreshner.html
+2. Clicks "Download Extension" / "Add to Chrome" → ZIP downloads
+3. Follows same Load unpacked steps as MutedHue
+4. Extension appears in Chrome toolbar
+5. User opens Refreshner popup on target tab
 2. Selects interval: preset chip (30s) or custom (HH:MM:SS)
 3. Optionally toggles "Hard Refresh" checkbox (bypassCache)
 4. Optionally enters keywords: "in stock" + "Add keyword"

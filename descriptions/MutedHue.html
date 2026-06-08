@@ -1,0 +1,291 @@
+<!--
+JIT - Browser Extension Studio
+Copyright (C) 2026  Pawan Simha R
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── Primary Meta ── -->
+  <title>MutedHue - Adaptive Text Selection Color | Free Chrome Extension</title>
+  <meta name="description" content="MutedHue replaces harsh blue text selection with a subtle, adaptive grey highlight on every website. Light and dark mode aware. Zero permissions, free and open source." />
+  <meta name="keywords" content="MutedHue, Chrome extension, text selection color, adaptive grey highlight, privacy extension, open source" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Pawan Simha R" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://pawansimha.github.io/JIT/descriptions/MutedHue.html" />
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MutedHue - Adaptive Text Selection Color" />
+  <meta property="og:description" content="Replaces bright blue text selection with a subtle, adaptive grey highlight. Zero permissions, free and open source." />
+  <meta property="og:url" content="https://pawansimha.github.io/JIT/descriptions/MutedHue.html" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.webp" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="MutedHue logo" />
+  <meta property="og:site_name" content="JIT" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="MutedHue - Adaptive Text Selection Color" />
+  <meta name="twitter:description" content="Replace blue text selection with adaptive grey. Free, open source Chrome extension." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.webp" />
+  <meta name="twitter:image:alt" content="MutedHue logo" />
+
+  <!-- ── JSON-LD Schema ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "MutedHue",
+    "applicationCategory": "BrowserExtension",
+    "operatingSystem": "Chrome",
+    "description": "Replaces bright blue text selection with a subtle, adaptive grey highlight on every website. Light and dark mode aware.",
+    "softwareVersion": "1.0.0",
+    "size": "12 KB",
+    "dateModified": "2026-03",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Pawan Simha R",
+      "url": "https://portfolio-pawansimha.vercel.app"
+    }
+  }
+  </script>
+
+  <!-- ── Preload critical assets ── -->
+  <link rel="preload" href="../Logo.webp" as="image" />
+  <link rel="preload" href="../fonts.css" as="style" />
+  <link rel="preload" href="https://fonts.gstatic.com/s/googlesans/v69/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjIUvQ.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="https://fonts.gstatic.com/s/googlesanstext/v25/5aUu9-KzpRiLCAt4Unrc-xIKmCU5qEp2iw.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- ── Favicon set ── -->
+  <link rel="icon" href="../Logo.webp" sizes="32x32" />
+  <link rel="icon" href="../Logo.webp" sizes="192x192" />
+  <link rel="apple-touch-icon" href="../Logo.webp" sizes="180x180" />
+  <link rel="manifest" href="../site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../fonts.css" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header" role="banner">
+    <div class="header-wrap">
+      <div class="header-inner">
+        <a href="../index.html" class="header-brand" aria-label="JIT home">
+          <img src="../Logo.webp" alt="JIT" class="header-logo" width="36" height="36" />
+          <span class="header-brand-text">JIT</span>
+        </a>
+        <nav class="header-nav" id="headerNav" aria-label="Main navigation">
+          <a href="../index.html#about" class="nav-item">About</a>
+          <a href="../index.html#extensions" class="nav-item">Extensions</a>
+          <a href="../index.html#faq" class="nav-item">FAQ</a>
+          <a href="../index.html#developer" class="nav-item">Developer</a>
+          <a href="../index.html#contact" class="nav-item">Contact</a>
+        </nav>
+        <a href="../extension.html" class="header-pill" aria-label="Download extensions">Download</a>
+        <button class="header-toggle" id="headerToggle" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ EXTENSION DETAIL ============ -->
+  <section class="ext-detail" aria-labelledby="ext-name">
+    <div class="container">
+      <div class="ext-detail-card">
+        <div class="ext-detail-header">
+          <img src="../MutedHue/icons/MutedHue.png" alt="MutedHue" class="ext-detail-logo" width="96" height="96" />
+          <div class="ext-detail-info">
+            <h1 id="ext-name">MutedHue</h1>
+            <div class="ext-detail-meta">
+              <span>Version 1.0.0</span>
+              <span>12 KB</span>
+              <span>Updated March 2026</span>
+              <span class="badge-live">Free</span>
+              <span class="badge-live">Open Source</span>
+            </div>
+            <div class="ext-detail-actions">
+              <a href="../MutedHue.zip" class="btn btn-blue" download data-ext="mutedhue" aria-label="Download MutedHue extension">Download Extension</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ext-detail-body">
+        <div class="ext-detail-section">
+          <h2><span class="sec-icon sec-icon-blue">&#9679;</span> Overview</h2>
+          <p>MutedHue replaces the harsh bright blue text selection on every website with a subtle, adaptive grey highlight. It is gentle on the eyes and blends beautifully with both light and dark themes -- no configuration needed, works instantly after install.</p>
+        </div>
+
+        <div class="ext-detail-section">
+          <h2><span class="sec-icon sec-icon-yellow">&#9733;</span> Key Features</h2>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <div class="feature-icon feature-icon-blue">&#9670;</div>
+              <div class="feature-text">
+                <strong>Adaptive Grey</strong>
+                <span>Replaces bright blue selection with a subtle grey on all websites</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon feature-icon-green">&#9788;</div>
+              <div class="feature-text">
+                <strong>Theme Aware</strong>
+                <span>Automatically adapts between light and dark mode</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon feature-icon-red">&#9888;</div>
+              <div class="feature-text">
+                <strong>Zero Permissions</strong>
+                <span>No permissions required -- no data, no network requests</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon feature-icon-yellow">&#9881;</div>
+              <div class="feature-text">
+                <strong>Shadow DOM</strong>
+                <span>Patches attachShadow to inject styles into web components</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon feature-icon-green">&#10003;</div>
+              <div class="feature-text">
+                <strong>Instant Setup</strong>
+                <span>Works immediately after install -- no configuration needed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ext-detail-section">
+          <h2><span class="sec-icon sec-icon-blue">&#9881;</span> How It Works</h2>
+          <p>MutedHue uses a content script that runs at document start to inject custom <code>::selection</code> styles. It detects the page's background luminance and switches between light and dark selection colors accordingly. A <code>MutationObserver</code> monitors theme changes on the <code>&lt;html&gt;</code> element, and <code>Element.prototype.attachShadow</code> is monkeypatched to inject styles into shadow DOMs -- covering modern web apps built with frameworks like React, Vue, or Lit.</p>
+        </div>
+
+        <div class="ext-detail-section">
+          <h2><span class="sec-icon sec-icon-green">&#9829;</span> Privacy</h2>
+          <div class="privacy-card">
+            <div class="privacy-shield">&#10003;</div>
+            <div class="privacy-text">
+              <strong>Your data stays yours</strong>
+              <p>MutedHue collects no data. It requires no permissions, makes no network requests, and has no analytics, no telemetry, no tracking -- nothing leaves your browser. Ever.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ext-detail-section">
+          <h2><span class="sec-icon sec-icon-yellow">&#9881;</span> Installation Instructions</h2>
+          <div class="install-steps">
+            <div class="install-step">
+              <span class="install-num">1</span>
+              <span class="install-text">Click <strong>Download Extension</strong> above to get the ZIP file</span>
+            </div>
+            <div class="install-step">
+              <span class="install-num">2</span>
+              <span class="install-text">Extract the ZIP to a folder on your computer</span>
+            </div>
+            <div class="install-step">
+              <span class="install-num">3</span>
+              <span class="install-text">Open Chrome and go to <code>chrome://extensions</code></span>
+            </div>
+            <div class="install-step">
+              <span class="install-num">4</span>
+              <span class="install-text">Enable <strong>Developer mode</strong> (toggle at top right)</span>
+            </div>
+            <div class="install-step">
+              <span class="install-num">&#10003;</span>
+              <span class="install-text">Click <strong>Load unpacked</strong> and select the extracted folder. Done!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-head">
+          <img src="../Logo.webp" alt="JIT" class="footer-logo-img" width="44" height="44" />
+          <span class="footer-logo">JIT</span>
+        </div>
+        <p>Clean, focused browser extensions built with privacy and purpose. Every tool does one thing well and respects your data.</p>
+        <p class="footer-email">Contact: <a href="mailto:iampawansimha.2004@gmail.com">iampawansimha.2004@gmail.com</a></p>
+        <nav class="footer-social" aria-label="Social media links">
+          <a href="https://github.com/PawanSimha" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+          <a href="https://x.com/iampawansimha" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>
+          <a href="mailto:iampawansimha.2004@gmail.com" aria-label="Email">Email</a>
+        </nav>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#extensions">Extensions</a>
+          <a href="../index.html#faq">FAQ</a>
+          <a href="../index.html#developer">Developer</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="../index.html#contact">Contact</a>
+          <a href="../index.html#contact">Support</a>
+          <a href="../index.html#contact">Careers</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="../PRIVACY.md">Privacy Policy</a>
+          <a href="../PRIVACY.md">Terms of Service</a>
+          <a href="../PRIVACY.md">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>&copy; 2026 JIT. Built in the workshop.</span>
+      <span>Made with care. No trackers. No noise.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+
+  <!-- ── Cookie Consent Banner ── -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent" aria-hidden="true">
+    <div class="cookie-banner-inner">
+      <p>This site uses minimal cookies to ensure core functionality. No tracking or analytics cookies are used. <a href="../PRIVACY.md">Learn more</a>.</p>
+      <div class="cookie-actions">
+        <button class="cookie-btn cookie-decline" id="cookieDecline" type="button">Decline</button>
+        <button class="cookie-btn cookie-accept" id="cookieAccept" type="button">Accept</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

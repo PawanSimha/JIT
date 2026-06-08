@@ -50,7 +50,7 @@ Every section heading is followed by a concise, descriptive subtitle, optimized 
 | Extension | Description | Version | Size |
 |-----------|-------------|---------|------|
 | **MutedHue** | Replaces bright blue text selection with a subtle, adaptive grey highlight. Light and dark mode aware. Shadow DOM support included. | 1.0.0 | 12 KB |
-| **Refreshner** | Smart auto-refresh with quick presets, custom HH:MM:SS intervals, random intervals, keyword page monitoring, live countdown ring, and audio alerts on match. | 1.0.0 | 28 KB |
+| **Refreshner** | Smart auto-refresh with quick presets, custom HH:MM:SS intervals, random intervals, keyword page monitoring, live countdown ring, and audio alerts on match. | 2.0 | 28 KB |
 
 ### Website
 
@@ -63,6 +63,8 @@ Every section heading is followed by a concise, descriptive subtitle, optimized 
 | **Contact Form** | FormSubmit.io serverless POST, delivers to pawansimha.pc@gmail.com, disabled-on-submit UX |
 | **Developer Showcase** | 7-link grid (GitHub, LinkedIn, X, Google Dev, Google Skills, Credly, Portfolio) |
 | **Cookie Consent** | localStorage-based GDPR/CCPA compliant banner, Accept or Decline |
+| **Extension Detail Pages** | Dedicated pages for each extension with full description, features, and install guide |
+| **Install Modal** | Step-by-step install instructions with ZIP download + Load unpacked guide |
 
 ### SEO & Discoverability
 
@@ -71,7 +73,7 @@ Every section heading is followed by a concise, descriptive subtitle, optimized 
 | **JSON-LD Structured Data** | 4-node @graph (Organization + Person + 2 SoftwareApplication) for rich search results |
 | **Open Graph / Twitter Cards** | Pre-configured meta tags for social link previews with Logo.webp |
 | **AI Crawler Strategy** | robots.txt allows Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User, Claude-Web, PerplexityBot; blocks training scrapers |
-| **Sitemap** | sitemap.xml covering 2 URLs (/, /extension.html) |
+| **Sitemap** | sitemap.xml covering 4 URLs (/, /extension.html, 2 description pages) |
 | **Per-Page Canonicals** | Every page exports canonical URL pointing to github.io sub-path |
 | **Security Headers** | CSP, HSTS, X-Frame-Options, Permissions-Policy via `_headers` (GitHub Pages) |
 
@@ -111,6 +113,16 @@ Every section heading is followed by a concise, descriptive subtitle, optimized 
 +--------------------------------------------------------------------+
 ```
 
+### Extension Detail Flow
+
+```
+index.html  ──[Learn More]──>  descriptions/MutedHue.html  (full details + download)
+                                descriptions/Refreshner.html (full details + download)
+
+extension.html ──[Add to Chrome]──>  ZIP download + Install Modal (step-by-step guide)
+                ──[Learn More]──>  descriptions/MutedHue.html / Refreshner.html
+```
+
 ---
 
 ## Tech Stack
@@ -132,36 +144,43 @@ Every section heading is followed by a concise, descriptive subtitle, optimized 
 ```
 JIT/
 ├── index.html                 # Main landing page (hero, about, extensions, FAQ, developer, contact, footer)
-├── extension.html             # Extensions catalog (full extension details + Chrome Web Store links)
+├── extension.html             # Extensions catalog with ZIP download + install modal
 ├── 404.html                   # Branded error page (dark theme, Google Sans, inline styles)
-├── style.css                  # Full design system (30+ custom properties, clamp() typography, 5 breakpoints)
-├── script.js                  # Vanilla JS IIFE (scroll reveal, FAQ accordion, mobile menu, contact form, cookie consent)
+├── style.css                  # Full design system (~1140 lines) including ext-detail, modal, feature-grid
+├── script.js                  # Vanilla JS IIFE (scroll reveal, FAQ accordion, mobile menu,
+│                              #   contact form, cookie consent, install modal)
 ├── fonts.css                  # Google Sans and Google Sans Text @font-face declarations
 ├── Logo.webp                  # Brand logo (nav, favicon, about section, footer, OG image)
 ├── Hero JIT.webp              # README hero / banner image
 │
-├── MutedHue/                  # Chrome Extension MV3
-│   ├── manifest.json          # content_scripts matches <all_urls>, run_at document_start
-│   ├── content.css            # ::selection override rules (light + dark via @media)
-│   ├── content.js             # Luminance detection, style injection, MutationObserver, Shadow DOM monkeypatch
-│   └── icons/MutedHue.png     # Extension icon (16-128px)
+├── MutedHue/                  # Chrome Extension MV3 - adaptive text selection
+│   ├── manifest.json          #   content_scripts matches <all_urls>, run_at document_start
+│   ├── content.css            #   ::selection override rules (light + dark via @media)
+│   ├── content.js             #   Luminance detection, style injection, MutationObserver, Shadow DOM
+│   └── icons/MutedHue.png     #   Extension icon (16-128px)
 │
-├── Refreshner/                # Chrome Extension MV3
-│   ├── manifest.json          # background service_worker, action popup, 4 permissions + <all_urls>
-│   ├── background.js          # Alarm scheduler, message router, notification dispatcher
-│   ├── content.js             # Page text scanner, keyword matching, audio alert trigger
-│   ├── popup.html             # Timer UI with countdown ring, interval chips, keyword input
-│   ├── popup.js               # Tab state management, countdown animation, chip/input handlers
-│   ├── popup.css              # Glassmorphism popup design, ring progress bar, responsive layout
-│   ├── index.html             # Standalone landing page for Refreshner (separate branding)
-│   └── icons/Refreshner.png   # Extension icon
+├── Refreshner/                # Chrome Extension MV3 - smart auto-refresh + keyword monitor
+│   ├── manifest.json          #   background service_worker, action popup, 4 permissions + <all_urls>
+│   ├── background.js          #   Alarm scheduler, message router, notification dispatcher
+│   ├── content.js             #   Page text scanner, keyword matching, audio alert trigger
+│   ├── popup.html             #   Timer UI with countdown ring, interval chips, keyword input
+│   ├── popup.js               #   Tab state management, countdown animation, chip/input handlers
+│   ├── popup.css              #   Glassmorphism popup design, ring progress bar, responsive layout
+│   ├── index.html             #   Standalone landing page for Refreshner (separate branding)
+│   └── icons/Refreshner.png   #   Extension icon
 │
-├── 404.html                   # Branded error page (dark theme, Google Sans, inline styles)
+├── descriptions/              # Extension detail pages with full info + download
+│   ├── MutedHue.html          #   MutedHue features, how-it-works, privacy, install guide
+│   └── Refreshner.html        #   Refreshner features, how-it-works, privacy, install guide
+│
+├── MutedHue.zip               # Packaged MutedHue extension for download
+├── Refreshner.zip             # Packaged Refreshner extension for download
+│
 ├── robots.txt                 # AI crawler directives (search allowed, training scrapers blocked)
-├── sitemap.xml                # SEO sitemap (2 URLs with priority + lastmod)
+├── sitemap.xml                # SEO sitemap (4 URLs with priority + lastmod)
 ├── _headers                   # Security headers (CSP, HSTS, X-Frame-Options, Permissions-Policy)
 ├── site.webmanifest           # PWA manifest (name, theme_color, icons 192 + 512)
-├── .gitignore                 # OS files, editor configs, env secrets, stale partials
+├── .gitignore                 # OS files, editor configs, env secrets, stale partials, *.zip
 ├── LICENSE                    # GNU General Public License v3.0
 ├── PRIVACY.md                 # Privacy policy (GDPR/CCPA compliant, zero-collection)
 ├── PRD.md                     # Product requirements document
@@ -192,12 +211,18 @@ xdg-open index.html      # Linux
 3. Click **Load unpacked**
 4. Select the `MutedHue/` or `Refreshner/` folder
 
+Or download the ZIP from the website and follow the install guide:
+
+1. Click **Add to Chrome** on `extension.html` to download the ZIP
+2. Extract the ZIP to a folder
+3. Follow the on-screen install instructions (chrome://extensions -> Developer mode -> Load unpacked)
+
 ---
 
 ## Product Roadmap
 
-- [ ] **Firefox port** -- Rewrite extensions for WebExtension API compatibility
 - [ ] **Chrome Web Store publishing** -- Submit MutedHue and Refreshner officially
+- [ ] **Firefox port** -- Rewrite extensions for WebExtension API compatibility
 - [ ] **Privacy Policy / ToS pages** -- Convert PRIVACY.md to dedicated HTML pages
 - [ ] **FormSubmit thank-you redirect** -- Custom redirect page after form submission
 - [ ] **PWA service worker** -- Add offline caching support
@@ -209,7 +234,9 @@ xdg-open index.html      # Linux
 | Command | Description |
 |---------|-------------|
 | `open index.html` | View the landing page |
-| `open extension.html` | View extensions catalog |
+| `open extension.html` | View extensions catalog with download |
+| `open descriptions/MutedHue.html` | View MutedHue detail page |
+| `open descriptions/Refreshner.html` | View Refreshner detail page |
 | Load unpacked in Chrome | Test extensions locally |
 
 ### Contribution

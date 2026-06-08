@@ -178,7 +178,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               <li><strong>Size:</strong> 12 KB</li>
               <li><strong>Updated:</strong> March 2026</li>
             </ul>
-            <a href="https://chromewebstore.google.com" target="_blank" rel="noopener" class="ext-link" aria-label="Add MutedHue to Chrome">Add to Chrome &rsaquo;</a>
+            <a href="MutedHue.zip" class="ext-link" download data-ext="mutedhue" aria-label="Add MutedHue to Chrome">Add to Chrome &rsaquo;</a>
           </div>
         </article>
 
@@ -197,7 +197,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               <li><strong>Size:</strong> 28 KB</li>
               <li><strong>Updated:</strong> May 2026</li>
             </ul>
-            <a href="https://chromewebstore.google.com" target="_blank" rel="noopener" class="ext-link" aria-label="Add Refreshner to Chrome">Add to Chrome &rsaquo;</a>
+            <a href="Refreshner.zip" class="ext-link" download data-ext="refreshner" aria-label="Add Refreshner to Chrome">Add to Chrome &rsaquo;</a>
           </div>
         </article>
 
@@ -221,6 +221,43 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       </div>
     </div>
   </section>
+
+  <!-- ============ INSTALL MODAL ============ -->
+  <div class="modal-overlay" id="installModal" role="dialog" aria-modal="true" aria-label="Extension installation guide" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close installation guide" type="button">
+        <span></span><span></span>
+      </button>
+      <div class="modal-head">
+        <img class="modal-icon" id="modalIcon" src="" alt="Extension icon" width="48" height="48" />
+        <h3 class="modal-title" id="modalTitle">Install Extension</h3>
+      </div>
+      <p class="modal-desc">The download has started. Follow these steps to install the extension in Chrome:</p>
+      <ol class="modal-steps" id="modalSteps">
+        <li class="step" data-step="1">
+          <span class="step-num">1</span>
+          <span class="step-text">Extract the downloaded ZIP file to a folder on your computer</span>
+        </li>
+        <li class="step" data-step="2">
+          <span class="step-num">2</span>
+          <span class="step-text">Open Chrome and go to <code>chrome://extensions</code></span>
+        </li>
+        <li class="step" data-step="3">
+          <span class="step-num">3</span>
+          <span class="step-text">Enable <strong>Developer mode</strong> (toggle at top right)</span>
+        </li>
+        <li class="step" data-step="4">
+          <span class="step-num">4</span>
+          <span class="step-text">Click <strong>Load unpacked</strong> and select the extracted folder</span>
+        </li>
+        <li class="step" data-step="5" id="stepDone">
+          <span class="step-num">&#10003;</span>
+          <span class="step-text">Done! The extension is now installed and active</span>
+        </li>
+      </ol>
+      <a href="https://chromewebstore.google.com" target="_blank" rel="noopener" class="modal-cws-link">Also available on Chrome Web Store &rsaquo;</a>
+    </div>
+  </div>
 
   <!-- ============ FOOTER ============ -->
   <footer class="footer" role="contentinfo">

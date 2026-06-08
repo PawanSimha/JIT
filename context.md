@@ -37,7 +37,8 @@
 
 ### Website (Static Site)
 - **Rendering paradigm:** Pure static (no SSR, no SSG framework). Served as flat HTML/CSS/JS.
-- **Routing:** File-based, manual. `index.html` = home, `extension.html` = extensions catalog. In-page anchor navigation (`#about`, `#faq`, etc.) via native `scroll-behavior: smooth`.
+- **Routing:** File-based, manual. `index.html` = home, `extension.html` = extensions catalog with download, `descriptions/MutedHue.html` and `descriptions/Refreshner.html` = extension detail pages. In-page anchor navigation (`#about`, `#faq`, etc.) via native `scroll-behavior: smooth`.
+- **Extension download flow:** Click "Add to Chrome" on `extension.html` or "Download Extension" on detail pages -> downloads ZIP file -> install modal appears with step-by-step "Load unpacked" guide for Chrome Developer mode.
 - **State management:** None. No frameworks, no stores, no reactive state. Cookie consent preference persisted in `localStorage` key `jit_cookie_consent`.
 - **Data flow (contact form):** Browser → POST to FormSubmit.io → email to pawansimha.pc@gmail.com. No database, no storage on our end.
 - **Header/Footer:** Inlined directly in each HTML page (no partials, no JS fetch). Both pages share identical nav/footer markup.
@@ -63,15 +64,15 @@
 ```
 JIT/
 ├── index.html                  # Main landing page — hero, about, extensions, FAQ, developer, contact, footer
-├── extension.html              # Extensions catalog — all extensions listed with details + Chrome store links
+├── extension.html              # Extensions catalog — all extensions listed with details + download + install modal
 ├── 404.html                    # Branded error page — dark theme, Google Sans, "Back to Home" CTA
 │
-├── style.css                   # Design system (~830 lines) — 30+ custom properties, clamp() typography,
+├── style.css                   # Design system (~1140 lines) — 30+ custom properties, clamp() typography,
 │                               # CSS Grid layout, 5 mobile-first breakpoints, micro-interactions,
-│                               # scroll reveal, cookie banner, custom scrollbar
+│                               # scroll reveal, cookie banner, custom scrollbar, install modal, ext-detail
 ├── fonts.css                   # Google Sans / Google Sans Text @font-face declarations from gstatic CDN
 ├── script.js                   # Vanilla JS IIFE — scroll reset, hamburger toggle, FAQ accordion,
-│                               # IntersectionObserver reveal, contact form submit, cookie consent
+│                               # IntersectionObserver reveal, contact form submit, cookie consent, install modal
 │
 ├── Logo.webp                  # Brand logo — used in nav (36px), about section (300px), footer (44px),
 │                               # favicon (32/192/180), apple-touch-icon, OG image, JSON-LD image
@@ -93,16 +94,23 @@ JIT/
 │   ├── index.html              #   Standalone landing page for Refreshner (separate branding)
 │   └── icons/Refreshner.png    #   Extension icon
 │
+├── descriptions/               # Extension detail pages
+│   ├── MutedHue.html           #   Full MutedHue detail page with logo, features, how-it-works, privacy, install guide
+│   └── Refreshner.html         #   Full Refreshner detail page with logo, features, how-it-works, privacy, install guide
+│
+├── MutedHue.zip               # Packaged MutedHue extension ZIP for direct download
+├── Refreshner.zip             # Packaged Refreshner extension ZIP for direct download
+│
 ├── PRD.md                      # Product Requirements Document — personas, OKRs, MoSCoW, user journeys
 ├── README.md                   # Documentation — badges, tech stack, project tree, quick start, roadmap
 ├── PRIVACY.md                  # Privacy policy — zero-collection, functional cookies, FormSubmit, GDPR/CCPA
 ├── LICENSE                     # GNU General Public License v3.0 — full text with copyright header
 │
 ├── robots.txt                  # AI crawler directives — search bots allowed, training scrapers blocked
-├── sitemap.xml                 # SEO sitemap — 2 URLs (/ at 1.0, /extension.html at 0.8)
+├── sitemap.xml                 # SEO sitemap — 4 URLs (/ at 1.0, /extension.html at 0.8, descriptions/* at 0.6)
 ├── site.webmanifest            # PWA manifest — name, theme_color, icons (192 + 512)
 ├── _headers                    # Security headers — HSTS, CSP, X-Frame-Options, Permissions-Policy
-├── .gitignore                  # Ignores — OS files, editor configs, env secrets, stale partials
+├── .gitignore                  # Ignores — OS files, editor configs, env secrets, stale partials, *.zip
 └── context.md                  # THIS FILE — architectural state map for session continuity
 ```
 
@@ -165,10 +173,18 @@ JIT/
 - `[x]` `:focus-visible` outlines enhanced per element type
 - `[x]` MutedHue extension (content script, luminance detection, Shadow DOM support)
 - `[x]` Refreshner extension (background service worker, alarm scheduler, keyword monitoring, popup UI)
+- `[x]` Extension detail pages (`descriptions/MutedHue.html`, `descriptions/Refreshner.html`) with full features, privacy, and install guide
+- `[x]` ZIP download + install modal flow for Chrome Developer mode installation
+- `[x]` "Learn More" links on index.html linking to detail pages
+- `[x]` Structured feature cards, privacy card, and numbered install steps on detail pages
+- `[x]` sitemap.xml updated with 4 URLs
+- `[x]` JSON-LD structured data on extension detail pages (SoftwareApplication schema)
+- `[x]` Responsive breakpoints for ext-detail, feature-grid, install-steps on mobile
+- `[x]` Refreshner version consistency (manifest 2.0.0, website 2.0)
+- `[x]` Site Audit — 0 issues remaining
 
 ### `[/]` In-Progress Workloads
 - `[/]` GitHub Pages activation (requires manual click in repo settings)
-- `[x]` README.md updated (complete rewrite following portfolio format, no emojis/em dashes)
 
 ### `[ ]` Upcoming Implementations (Next Steps)
 - `[ ]` Deploy live at `https://pawansimha.github.io/JIT/`

@@ -91,6 +91,48 @@
     });
   }
 
+  /* ── Extension install modal ── */
+  var installLinks = doc.querySelectorAll('.ext-link[download], .btn[download]');
+  var installModal = doc.getElementById('installModal');
+  var modalClose = doc.getElementById('modalClose');
+  var modalIcon = doc.getElementById('modalIcon');
+  var modalTitle = doc.getElementById('modalTitle');
+
+  if (installLinks.length && installModal) {
+    function openInstallModal(ext) {
+      var name = ext === 'mutedhue' ? 'MutedHue' : 'Refreshner';
+      var iconSrc = ext === 'mutedhue' ? 'MutedHue/icons/MutedHue.png' : 'Refreshner/icons/Refreshner.png';
+      if (modalIcon) { modalIcon.src = iconSrc; modalIcon.alt = name; }
+      if (modalTitle) modalTitle.textContent = 'Install ' + name;
+      installModal.classList.add('open');
+      installModal.setAttribute('aria-hidden', 'false');
+      doc.body.style.overflow = 'hidden';
+    }
+
+    function closeInstallModal() {
+      installModal.classList.remove('open');
+      installModal.setAttribute('aria-hidden', 'true');
+      doc.body.style.overflow = '';
+    }
+
+    installLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var ext = this.getAttribute('data-ext');
+        openInstallModal(ext);
+      });
+    });
+
+    if (modalClose) modalClose.addEventListener('click', closeInstallModal);
+
+    installModal.addEventListener('click', function (e) {
+      if (e.target === installModal) closeInstallModal();
+    });
+
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && installModal.classList.contains('open')) closeInstallModal();
+    });
+  }
+
   /* ── Cookie Consent ── */
   (function() {
     var banner = document.getElementById('cookieBanner');
