@@ -12,10 +12,11 @@ JIT ("we", "our", "us") is committed to protecting your privacy. This policy exp
 - **Functional cookies only** — A single local storage key (`jit_cookie_consent`) to remember your cookie preference. No tracking, analytics, or advertising cookies.
 - **Contact form submissions** — When you use our contact form, your name, email, and message are sent to us via FormSubmit.io. We use this data only to respond to your inquiry. We do not store or share this data beyond the email transmission.
 
-### Chrome Extensions (MutedHue, Refreshner)
+### Chrome Extensions (MutedHue, Refreshner, Goofanizer)
 - **Zero data collection.** Our extensions collect no personal information, no browsing history, no analytics, and no telemetry.
 - MutedHue operates entirely locally — it reads the current page's selection color and replaces it with a grey tone. No data leaves your browser.
 - Refreshner stores your preferences (refresh interval, monitored keywords) in your browser's local `storage` API. No data is transmitted externally.
+- Goofanizer uses the Chrome Debugger API to emulate viewports and capture screenshots. All processing is local — screenshots are saved directly to your computer and are never uploaded.
 
 ## Third-party services
 
