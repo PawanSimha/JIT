@@ -1,4 +1,5 @@
 (() => {
+  'use strict';
   const LIGHT_RULE = `::selection{background-color:rgba(211,211,211,0.2)!important;color:inherit!important}`;
   const DARK_RULE = `::selection{background-color:rgba(211,211,211,0.12)!important;color:inherit!important}`;
 

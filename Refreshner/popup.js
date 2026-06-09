@@ -1,3 +1,4 @@
+'use strict';
 let currentTabId = null;
 let currentState = null;
 let countdownInterval = null;

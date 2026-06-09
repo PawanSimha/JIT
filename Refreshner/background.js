@@ -1,3 +1,4 @@
+'use strict';
 const STORAGE_KEY = 'refreshner_tabs';
 
 async function loadAll() {

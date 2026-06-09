@@ -1,3 +1,4 @@
+'use strict';
 let monitoringActive = false;
 let keywords = [];
 let keywordMode = 'appear';

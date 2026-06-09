@@ -92,21 +92,21 @@
   }
 
   /* ── Extension install modal ── */
-  var installLinks = doc.querySelectorAll('.ext-link[download], .btn[download]');
-  var installModal = doc.getElementById('installModal');
-  var modalClose = doc.getElementById('modalClose');
-  var modalIcon = doc.getElementById('modalIcon');
-  var modalTitle = doc.getElementById('modalTitle');
+  const installLinks = doc.querySelectorAll('.ext-link[download], .btn[download]');
+  const installModal = doc.getElementById('installModal');
+  const modalClose = doc.getElementById('modalClose');
+  const modalIcon = doc.getElementById('modalIcon');
+  const modalTitle = doc.getElementById('modalTitle');
 
   if (installLinks.length && installModal) {
-    var extMap = {
+    const extMap = {
       mutedhue: { name: 'MutedHue', icon: 'MutedHue/icons/MutedHue.png' },
       refreshner: { name: 'Refreshner', icon: 'Refreshner/icons/Refreshner.png' },
       goofanizer: { name: 'Goofanizer', icon: 'Goofanizer/assets/Icon.png' }
     };
 
     function openInstallModal(ext) {
-      var entry = extMap[ext] || { name: 'Extension', icon: 'Logo.webp' };
+      const entry = extMap[ext] || { name: 'Extension', icon: 'Logo.webp' };
       if (modalIcon) { modalIcon.src = entry.icon; modalIcon.alt = entry.name; }
       if (modalTitle) modalTitle.textContent = 'Install ' + entry.name;
       installModal.classList.add('open');
@@ -122,7 +122,7 @@
 
     installLinks.forEach(function (link) {
       link.addEventListener('click', function (e) {
-        var ext = this.getAttribute('data-ext');
+        const ext = this.getAttribute('data-ext');
         openInstallModal(ext);
       });
     });
@@ -140,11 +140,11 @@
 
   /* ── Cookie Consent ── */
   (function() {
-    var banner = document.getElementById('cookieBanner');
+    const banner = document.getElementById('cookieBanner');
     if (!banner) return;
-    var accept = document.getElementById('cookieAccept');
-    var decline = document.getElementById('cookieDecline');
-    var dismissed = localStorage.getItem('jit_cookie_consent');
+    const accept = document.getElementById('cookieAccept');
+    const decline = document.getElementById('cookieDecline');
+    const dismissed = localStorage.getItem('jit_cookie_consent');
     if (dismissed) return;
     requestAnimationFrame(function() { banner.classList.add('visible'); banner.setAttribute('aria-hidden', 'false'); });
     function dismiss(choice) {

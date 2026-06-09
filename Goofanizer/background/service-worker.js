@@ -1,3 +1,4 @@
+'use strict';
 const STORAGE_KEY = 'rds_emulation_state';
 
 let activeTabId = null;
