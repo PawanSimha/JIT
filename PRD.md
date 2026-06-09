@@ -12,7 +12,7 @@
 
 ## 1. Executive Summary
 
-JIT is a small studio that builds clean, focused browser extensions and a brand website to showcase them. The product consists of two Chrome extensions — **MutedHue** (adaptive text-selection color replacement) and **Refreshner** (smart auto-refresh with keyword page monitoring) — plus a dark-themed marketing site with a developer portfolio, FAQ, and contact gateway. We are building this to prove that browser extensions can be minimal, privacy-respecting, and beautifully integrated into the user's daily workflow.
+JIT is a small studio that builds clean, focused browser extensions and a brand website to showcase them. The product consists of three Chrome extensions — **MutedHue** (adaptive text-selection color replacement), **Refreshner** (smart auto-refresh with keyword page monitoring), and **Goofanizer** (responsive device switcher with screenshot/export) — plus a dark-themed marketing site with a developer portfolio, FAQ, and contact gateway. We are building this to prove that browser extensions can be minimal, privacy-respecting, and beautifully integrated into the user's daily workflow.
 
 ---
 
@@ -24,7 +24,7 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
 2. **Inefficient page monitoring** — Users who need to watch pages for content changes resort to manual refreshing, unreliable tools, or extensions with excessive permissions.
 3. **Distrust of extensions** — Most extensions request broad permissions, phone home with analytics, or bundle trackers.
 
-**JIT's solution** is a pair of extensions that each do one thing exceptionally well with zero data collection, paired with a transparent brand site that communicates values clearly.
+**JIT's solution** is a set of extensions that each do one thing exceptionally well with zero data collection, paired with a transparent brand site that communicates values clearly.
 
 ---
 
@@ -35,6 +35,7 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
 | **Visual Comfort Seeker** | General web user / Designer | Wants a consistent, eye-friendly text-selection experience across all sites | Installs MutedHue and forgets about it — the extension works silently on every page |
 | **Productivity User** | Developer / QA / Shopper | Needs to auto-refresh pages and get notified when specific content appears or disappears | Configures Refreshner intervals and keywords, leaves browser running in background |
 | **Privacy-Conscious Adopter** | Power user / Open source advocate | Seeks tools that are transparent, auditable, and collect zero data | Reads the FAQ, inspects the source on GitHub, contributes issues/PRs |
+| **Responsive Developer / QA** | Web developer / QA engineer | Needs to test layouts across device sizes, capture screenshots for documentation | Uses Goofanizer presets, rotates viewports, exports batches of responsive screenshots |
 
 ---
 
@@ -67,8 +68,13 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
 | Refreshner — countdown timer in popup | SVG progress ring | ✅ Shipped |
 | Marketing website — landing page | `index.html` | ✅ Shipped |
 | Marketing website — extensions listing page | `extension.html` | ✅ Shipped |
-| Marketing website — extension detail pages | `descriptions/MutedHue.html`, `descriptions/Refreshner.html` | ✅ Shipped |
-| ZIP download + install modal for Developer mode | `MutedHue.zip`, `Refreshner.zip` + modal | ✅ Shipped |
+| Marketing website — extension detail pages | `descriptions/MutedHue.html`, `descriptions/Refreshner.html`, `descriptions/Goofanizer.html` | ✅ Shipped |
+| ZIP download + install modal for Developer mode | `MutedHue.zip`, `Refreshner.zip`, `Goofanizer.zip` + modal | ✅ Shipped |
+| Goofanizer extension — responsive device switcher | Chrome MV3 `chrome.debugger` API | ✅ Shipped (v1.0.0) |
+| Goofanizer — 4 device presets (Android, iPhone, Tablet S, iPad Pro) | `utils/devices.js` | ✅ Shipped |
+| Goofanizer — rotate viewport orientation | `background/service-worker.js` — Emulation.setDeviceMetricsOverride | ✅ Shipped |
+| Goofanizer — screenshot capture + batch export | `Page.captureScreenshot` + in-memory ZIP builder | ✅ Shipped |
+| Goofanizer — search filter for devices | `popup.js` input handler | ✅ Shipped |
 | FAQ accordion (8 questions) | `script.js` + HTML | ✅ Shipped |
 | Contact form → email (FormSubmit) | POST to `pawansimha.pc@gmail.com` | ✅ Shipped |
 | Developer portfolio section (7 social links) | `.dev-links` grid | ✅ Shipped |
@@ -78,10 +84,10 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
 
 | Feature | Rationale |
 |---|---|
-| **Chrome Web Store publishing** | Both extensions are fully coded but not yet submitted to CWS |
+| **Chrome Web Store publishing** | All three extensions are fully coded but not yet submitted to CWS |
 | **Privacy Policy / Terms of Service pages** | Footer links currently point to PRIVACY.md placeholders — needed before CWS submission |
 | **Thank-you / redirect page after form submission** | Currently button just shows "Sending…" with no success confirmation |
-| **Firefox (WebExtension) port** | MutedHue CSS-only port is trivial; Refreshner needs `browser.alarms` & `browser.notifications` adaptation |
+| **Firefox (WebExtension) port** | MutedHue CSS-only port is trivial; Refreshner needs `browser.alarms` & `browser.notifications` adaptation. Goofanizer cannot be ported — `chrome.debugger` is Chromium-only |
 
 ### P2 — Could Have (logical future enhancements)
 
@@ -99,8 +105,9 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
 
 | Constraint | Detail |
 |---|---|
-| **Chrome MV3 only** | Both extensions target Manifest V3. Service workers replace background pages. No `webRequest` blocking — Refreshner uses `alarms` + `tabs.reload`. |
-| **Zero external network calls from extensions** | MutedHue requests **zero permissions**. Refreshner only uses `storage`, `alarms`, `notifications`, `tabs` — all local. No analytics, no telemetry. |
+| **Chrome MV3 only** | All extensions target Manifest V3. Service workers replace background pages. No `webRequest` blocking — Refreshner uses `alarms` + `tabs.reload`. |
+| **Zero external network calls from extensions** | MutedHue requests **zero permissions**. Refreshner only uses `storage`, `alarms`, `notifications`, `tabs`. Goofanizer uses `debugger`, `storage`, `tabs`, `activeTab`, `downloads`, `windows` — all local. No analytics, no telemetry. |
+| **Chrome Debugger API (Goofanizer)** | Goofanizer uses `chrome.debugger` to attach to tabs and send `Emulation.setDeviceMetricsOverride`. This is Chrome-specific and will not work in Firefox or non-Chromium browsers. Screenshots use `Page.captureScreenshot`. |
 | **Browser storage for Refreshner state** | `chrome.storage.local` — limited to ~10 MB per extension. State keyed by `tabId`. |
 | **Form submission via third-party** | `formsubmit.co` handles email forwarding. No custom backend. Form data leaves the browser to an external service. |
 | **No build step** | Pure static HTML/CSS/JS. No npm, no bundler, no transpilation. Google Sans fonts loaded via CDN `@font-face` from `fonts.gstatic.com`. |
@@ -130,6 +137,31 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
    c. Sets ::selection to rgba(211,211,211,0.2) [light] or 0.12 [dark]
    d. Watches for theme changes via MutationObserver
 8. User forgets extension exists — selection highlight is now consistently subtle everywhere
+```
+
+### Flow 3 — Installing & Using Goofanizer
+
+```
+1. User lands on extension.html or descriptions/Goofanizer.html
+2. Clicks "Download Extension" / "Add to Chrome" → ZIP downloads
+3. Follows Load unpacked steps to install extension
+4. Extension icon appears in Chrome toolbar
+5. User presses Ctrl+Shift+M (or clicks icon) → popup window opens
+6. Popup shows 4 device cards split into Phones (2) and Tablets (2):
+   a. Android (360x800)
+   b. iPhone (390x844)
+   c. Tablet S (800x1280)
+   d. iPad Pro (834x1194)
+7. User clicks a device card → Chrome debugger attaches to active tab:
+   a. Debugger sends Emulation.setDeviceMetricsOverride
+   b. Viewport resizes to match device dimensions
+   c. Device scale factor and orientation are set
+   d. Status badge shows active device name
+8. User can click Rotate → emulated device rotates between portrait/landscape
+9. User clicks Screenshot → current viewport captured as PNG download
+10. User clicks Export → all 4 presets screenshotted and bundled into ZIP
+11. User clicks Reset or closes popup → viewport returns to normal
+12. Search bar filters devices by name or dimensions for quick access
 ```
 
 ### Secondary Flow — Installing & Using Refreshner
@@ -162,6 +194,6 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
 - ❌ **No user accounts or authentication** — Extensions work immediately after install with zero sign-up.
 - ❌ **No backend server** — Entire site is static HTML. No database, no API, no server-side logic.
 - ❌ **No data syncing** — Refreshner state is per-browser, per-tab. No cloud sync of intervals or keywords.
-- ❌ **No Safari / Edge specific builds** — Chromium-based browsers only for now (Chrome, Edge, Brave, Opera). Firefox is on the roadmap.
+- ❌ **No Safari / Edge specific builds** — Chromium-based browsers only for now (Chrome, Edge, Brave, Opera). Firefox is on the roadmap (except Goofanizer — requires Chrome-specific debugger API).
 - ❌ **No premium / paid tier** — All extensions are and will remain 100% free and open source.
 - ❌ **No A/B testing or analytics on the website** — No tracking scripts, no cookies, no fingerprinting.

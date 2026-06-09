@@ -22,18 +22,19 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ── Primary Meta ── -->
-  <title>All JIT Chrome Extensions - MutedHue & Refreshner | Free & Open Source</title>
-  <meta name="description" content="Browse all JIT browser extensions: MutedHue replaces blue text selection with adaptive grey; Refreshner provides smart auto-refresh with keyword monitoring. Both are free, open source, and privacy-first." />
-  <meta name="keywords" content="JIT extensions, Chrome extensions, MutedHue, Refreshner, free browser extensions, open source extensions, text selection color changer, auto refresh page monitor, privacy extensions" />
+  <title>All JIT Chrome Extensions - MutedHue, Refreshner & Goofanizer | Free & Open Source</title>
+  <meta name="description" content="Browse all JIT browser extensions: MutedHue replaces blue text selection with adaptive grey; Refreshner provides smart auto-refresh with keyword monitoring; Goofanizer emulates mobile and tablet viewports. All free, open source, and privacy-first." />
+  <meta name="keywords" content="JIT extensions, Chrome extensions, MutedHue, Refreshner, Goofanizer, responsive device switcher, viewport emulator, free browser extensions, open source extensions, text selection color changer, auto refresh page monitor, privacy extensions" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Pawan Simha R" />
   <meta name="theme-color" content="#000000" />
   <link rel="canonical" href="https://pawansimha.github.io/JIT/extension.html" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large" />
 
   <!-- ── Open Graph ── -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="All JIT Chrome Extensions - MutedHue & Refreshner" />
-  <meta property="og:description" content="Free, open source Chrome extensions: MutedHue (adaptive text selection) and Refreshner (smart auto-refresh with keyword monitoring). Built with privacy by Pawan Simha R." />
+  <meta property="og:title" content="All JIT Chrome Extensions - MutedHue, Refreshner & Goofanizer" />
+  <meta property="og:description" content="Free, open source Chrome extensions: MutedHue (adaptive text selection), Refreshner (auto-refresh), and Goofanizer (device viewport switcher). Built with privacy by Pawan Simha R." />
   <meta property="og:url" content="https://pawansimha.github.io/JIT/extension.html" />
   <meta property="og:image" content="https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.webp" />
   <meta property="og:image:width" content="512" />
@@ -44,7 +45,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
   <!-- ── Twitter Card ── -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="All JIT Chrome Extensions - MutedHue & Refreshner" />
+  <meta name="twitter:title" content="All JIT Chrome Extensions - MutedHue, Refreshner & Goofanizer" />
   <meta name="twitter:description" content="Free, open source Chrome extensions from JIT. No trackers, zero data collection." />
   <meta name="twitter:image" content="https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.webp" />
   <meta name="twitter:image:alt" content="JIT logo" />
@@ -96,6 +97,28 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           "url": "https://portfolio-pawansimha.vercel.app"
         },
         "permissions": ["storage", "alarms", "notifications", "tabs"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://github.com/PawanSimha/JIT#goofanizer",
+        "name": "Goofanizer",
+        "applicationCategory": "BrowserExtension",
+        "operatingSystem": "Chrome",
+        "description": "Instantly emulate mobile and tablet viewports with one click. Switch between 4 predefined device presets.",
+        "softwareVersion": "1.0.0",
+        "size": "50 KB",
+        "dateModified": "2026-06",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Pawan Simha R",
+          "url": "https://portfolio-pawansimha.vercel.app"
+        },
+        "permissions": ["debugger", "storage", "tabs", "activeTab", "downloads", "windows"]
       }
     ]
   }
@@ -201,21 +224,22 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           </div>
         </article>
 
-        <article class="ext-card ext-soon">
+        <article class="ext-card">
           <div class="ext-art ext-art-3">
-            <div class="art-dots" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-            </div>
+            <img src="Goofanizer/assets/Icon.png" alt="Goofanizer" class="ext-logo" width="96" height="96" loading="lazy" />
           </div>
           <div class="ext-body">
             <div class="ext-head">
-              <h3>Next Tool</h3>
-              <span class="ext-status ext-soon-tag">Coming soon</span>
+              <h3>Goofanizer</h3>
+              <span class="ext-status ext-live">Published</span>
             </div>
-            <p>Something new is brewing in the JIT workshop. Stay tuned for details.</p>
-            <a href="index.html#contact" class="ext-link" aria-label="Get notified about new JIT tools">Get notified &rsaquo;</a>
+            <p>Instantly emulate mobile and tablet viewports with one click. Switch between 4 predefined device presets, rotate, capture screenshots, and batch export.</p>
+            <ul class="ext-details">
+              <li><strong>Version:</strong> 1.0</li>
+              <li><strong>Size:</strong> 50 KB</li>
+              <li><strong>Updated:</strong> June 2026</li>
+            </ul>
+            <a href="Goofanizer.zip" class="ext-link" download data-ext="goofanizer" aria-label="Add Goofanizer to Chrome">Add to Chrome &rsaquo;</a>
           </div>
         </article>
       </div>

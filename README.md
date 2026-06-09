@@ -32,6 +32,7 @@ JIT is a small studio that builds thoughtfully designed browser extensions -- to
 
 - **MutedHue** replaces harsh blue text selection with a subtle, adaptive grey across every website. Light and dark mode aware. Zero permissions required.
 - **Refreshner** provides smart auto-refresh with customizable intervals, keyword page monitoring, live countdown timer, and audio alerts.
+- **Goofanizer** instantly emulates mobile and tablet viewports with one click. Switch between 4 device presets, rotate, capture screenshots, and batch export.
 
 ### Design Philosophy - Google-Inspired Dark UI
 
@@ -51,6 +52,7 @@ Every section heading is followed by a concise, descriptive subtitle, optimized 
 |-----------|-------------|---------|------|
 | **MutedHue** | Replaces bright blue text selection with a subtle, adaptive grey highlight. Light and dark mode aware. Shadow DOM support included. | 1.0.0 | 12 KB |
 | **Refreshner** | Smart auto-refresh with quick presets, custom HH:MM:SS intervals, random intervals, keyword page monitoring, live countdown ring, and audio alerts on match. | 2.0 | 28 KB |
+| **Goofanizer** | Emulate mobile and tablet viewports instantly. 4 device presets, rotate, screenshot, batch export, and search filter. Uses Chrome Debugger API. | 1.0.0 | 50 KB |
 
 ### Website
 
@@ -70,10 +72,10 @@ Every section heading is followed by a concise, descriptive subtitle, optimized 
 
 | Capability | Details |
 |---|---|
-| **JSON-LD Structured Data** | 4-node @graph (Organization + Person + 2 SoftwareApplication) for rich search results |
+| **JSON-LD Structured Data** | 5-node @graph (Organization + Person + 3 SoftwareApplication) for rich search results |
 | **Open Graph / Twitter Cards** | Pre-configured meta tags for social link previews with Logo.webp |
 | **AI Crawler Strategy** | robots.txt allows Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User, Claude-Web, PerplexityBot; blocks training scrapers |
-| **Sitemap** | sitemap.xml covering 4 URLs (/, /extension.html, 2 description pages) |
+| **Sitemap** | sitemap.xml covering 5 URLs (/, /extension.html, 3 description pages) |
 | **Per-Page Canonicals** | Every page exports canonical URL pointing to github.io sub-path |
 | **Security Headers** | CSP, HSTS, X-Frame-Options, Permissions-Policy via `_headers` (GitHub Pages) |
 
@@ -101,7 +103,7 @@ Every section heading is followed by a concise, descriptive subtitle, optimized 
 +--------------------------------------------------------------------+
 |  About  |  Extensions (3 cards)  |  FAQ (8 Qs)  |  Developer      |
 |  (2-col |  MutedHue, Refreshner, | single-open  |  7-link grid    |
-|   grid) |  Coming Soon           | accordion    |  + full Portfolio|
+|   grid) |  Goofanizer            | accordion    |  + full Portfolio|
 +--------------------------------------------------------------------+
 |  Contact Form (FormSubmit.io - serverless POST)                     |
 +--------------------------------------------------------------------+
@@ -116,11 +118,12 @@ Every section heading is followed by a concise, descriptive subtitle, optimized 
 ### Extension Detail Flow
 
 ```
-index.html  ──[Learn More]──>  descriptions/MutedHue.html  (full details + download)
-                                descriptions/Refreshner.html (full details + download)
+index.html  ──[Learn More]──>  descriptions/MutedHue.html     (full details + download)
+                                descriptions/Refreshner.html   (full details + download)
+                                descriptions/Goofanizer.html  (full details + download)
 
 extension.html ──[Add to Chrome]──>  ZIP download + Install Modal (step-by-step guide)
-                ──[Learn More]──>  descriptions/MutedHue.html / Refreshner.html
+                ──[Learn More]──>  descriptions/MutedHue.html / Refreshner.html / Goofanizer.html
 ```
 
 ---
@@ -169,15 +172,24 @@ JIT/
 │   ├── index.html             #   Standalone landing page for Refreshner (separate branding)
 │   └── icons/Refreshner.png   #   Extension icon
 │
+├── Goofanizer/                 # Chrome Extension MV3 - responsive device switcher
+│   ├── manifest.json           #   debugger, storage, tabs, activeTab, downloads, windows
+│   ├── background/             #   service-worker.js - debugger API, emulation, screenshot
+│   ├── popup/                  #   popup UI with device cards, controls, screenshot/export
+│   ├── utils/                  #   devices.js - 4 device presets
+│   └── assets/                 #   Icon.png, os SVGs
+│
 ├── descriptions/              # Extension detail pages with full info + download
 │   ├── MutedHue.html          #   MutedHue features, how-it-works, privacy, install guide
-│   └── Refreshner.html        #   Refreshner features, how-it-works, privacy, install guide
+│   ├── Refreshner.html        #   Refreshner features, how-it-works, privacy, install guide
+│   └── Goofanizer.html        #   Goofanizer features, how-it-works, privacy, install guide
 │
 ├── MutedHue.zip               # Packaged MutedHue extension for download
 ├── Refreshner.zip             # Packaged Refreshner extension for download
+├── Goofanizer.zip             # Packaged Goofanizer extension for download
 │
 ├── robots.txt                 # AI crawler directives (search allowed, training scrapers blocked)
-├── sitemap.xml                # SEO sitemap (4 URLs with priority + lastmod)
+├── sitemap.xml                # SEO sitemap (5 URLs with priority + lastmod)
 ├── _headers                   # Security headers (CSP, HSTS, X-Frame-Options, Permissions-Policy)
 ├── site.webmanifest           # PWA manifest (name, theme_color, icons 192 + 512)
 ├── .gitignore                 # OS files, editor configs, env secrets, stale partials, *.zip
@@ -209,7 +221,7 @@ xdg-open index.html      # Linux
 1. Open `chrome://extensions`
 2. Enable **Developer mode** (top right)
 3. Click **Load unpacked**
-4. Select the `MutedHue/` or `Refreshner/` folder
+4. Select the `MutedHue/`, `Refreshner/`, or `Goofanizer/` folder
 
 Or download the ZIP from the website and follow the install guide:
 
@@ -221,8 +233,8 @@ Or download the ZIP from the website and follow the install guide:
 
 ## Product Roadmap
 
-- [ ] **Chrome Web Store publishing** -- Submit MutedHue and Refreshner officially
-- [ ] **Firefox port** -- Rewrite extensions for WebExtension API compatibility
+- [ ] **Chrome Web Store publishing** -- Submit MutedHue, Refreshner, and Goofanizer officially
+- [ ] **Firefox port** -- Rewrite extensions for WebExtension API compatibility (Goofanizer excluded -- uses Chrome-specific debugger API)
 - [ ] **Privacy Policy / ToS pages** -- Convert PRIVACY.md to dedicated HTML pages
 - [ ] **FormSubmit thank-you redirect** -- Custom redirect page after form submission
 - [ ] **PWA service worker** -- Add offline caching support
@@ -237,6 +249,7 @@ Or download the ZIP from the website and follow the install guide:
 | `open extension.html` | View extensions catalog with download |
 | `open descriptions/MutedHue.html` | View MutedHue detail page |
 | `open descriptions/Refreshner.html` | View Refreshner detail page |
+| `open descriptions/Goofanizer.html` | View Goofanizer detail page |
 | Load unpacked in Chrome | Test extensions locally |
 
 ### Contribution

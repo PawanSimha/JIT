@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Responsive Device Switcher",
+  "version": "1.0.0",
+  "description": "Instantly emulate mobile and tablet viewports with one click. Switch between 4 predefined device presets.",
+  "permissions": [
+    "debugger",
+    "storage",
+    "tabs",
+    "activeTab",
+    "downloads",
+    "windows"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "assets/Icon.png",
+      "48": "assets/Icon.png",
+      "128": "assets/Icon.png"
+    }
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+M",
+        "mac": "Command+Shift+M"
+      },
+      "description": "Open Responsive Device Switcher"
+    }
+  },
+  "icons": {
+    "16": "assets/Icon.png",
+    "48": "assets/Icon.png",
+    "128": "assets/Icon.png"
+  },
+  "browser_specific_settings": {
+    "edge": {
+      "browser_action_next_to_address_bar": true
+    }
+  }
+}

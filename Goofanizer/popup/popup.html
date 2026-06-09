@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Responsive Device Switcher</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="header-top">
+      <div class="header-brand">
+        <svg class="header-brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 16H3V4h18v12zm-2-8H5v6h14V8zm-7 10h-2v2H8v2h8v-2h-2v-2z" opacity="0.9"/>
+          <path d="M5 2h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v12h14V4H5z"/>
+        </svg>
+        <span class="header-title">Device Switcher</span>
+      </div>
+      <span id="statusBadge" class="badge idle">Inactive</span>
+    </div>
+    <div class="header-sub">
+      <div class="current-device" id="currentDevice">
+        <span class="device-dot" id="deviceDot"></span>
+        <span class="device-label">Active:</span>
+        <span class="device-name" id="deviceName">None</span>
+        <span class="device-dims" id="deviceDims"></span>
+      </div>
+      <input type="text" id="searchInput" placeholder="Filter devices..." aria-label="Filter devices">
+    </div>
+  </header>
+
+  <section id="section-mobile">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="color:var(--primary)">
+        <path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm-5 20c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-4H6V6h12v11z"/>
+      </svg>
+      Phones
+      <span id="mobileCount"></span>
+    </div>
+    <div class="card-grid" id="mobileGrid"></div>
+  </section>
+
+  <section id="section-tablet">
+    <div class="section-title">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="color:var(--primary)">
+        <path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 18c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-4H6V6h12v10z"/>
+      </svg>
+      Tablets
+      <span id="tabletCount"></span>
+    </div>
+    <div class="card-grid" id="tabletGrid"></div>
+  </section>
+
+  <section id="section-controls">
+    <div class="controls-row">
+      <button id="rotateBtn" class="btn btn-icon" title="Toggle portrait/landscape" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M15.55 5.55L11 1v3.07C7.06 4.56 4 7.92 4 12s3.06 7.44 7 7.93v-2.02c-2.84-.48-5-2.94-5-5.91s2.16-5.43 5-5.91V1l4.55 4.55zM19.93 11a7.906 7.906 0 00-1.62-3.89l-1.42 1.42c.54.75.88 1.6 1.02 2.47h2.02zM13 17.93v2.02a7.935 7.935 0 003.89-1.62l-1.42-1.42c-.75.54-1.59.89-2.47 1.02zm3.89-2.42l1.42 1.41A7.984 7.984 0 0019.93 13h-2.02a5.965 5.965 0 01-1.02 2.51z"/>
+        </svg>
+        Rotate
+      </button>
+      <button id="screenshotBtn" class="btn btn-icon" title="Capture screenshot of current viewport">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+        </svg>
+        Screenshot
+      </button>
+      <button id="exportBtn" class="btn btn-icon" title="Export screenshots for all device presets">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/>
+        </svg>
+        Export
+      </button>
+      <button id="resetBtn" class="btn btn-icon btn-danger-icon" title="Reset to original viewport" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+        </svg>
+        Reset
+      </button>
+    </div>
+  </section>
+
+  <div class="window-hint">Drag to move &middot; Drag edges to resize</div>
+</div>
+<script src="../utils/devices.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

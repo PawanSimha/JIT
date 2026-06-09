@@ -23,7 +23,6 @@
   --border:      rgba(255,255,255,0.08);
   --border-soft: rgba(255,255,255,0.05);
   --border-strong: rgba(255,255,255,0.12);
-  --border-accent: var(--g-blue);
 
   /* Text */
   --text-1: #ffffff;
@@ -43,9 +42,6 @@
 
   /* Gradients */
   --grad-blue: linear-gradient(135deg, #4285F4, #8ab4f8);
-  --grad-red: linear-gradient(135deg, #EA4335, #f28b82);
-  --grad-yellow: linear-gradient(135deg, #FBBC05, #fdd663);
-  --grad-green: linear-gradient(135deg, #34A853, #81c995);
 
   /* Layout */
   --max-w: 1200px;
@@ -66,9 +62,7 @@
   --lh-loose: 1.65;
 
   --ls-tight: -0.04em;
-  --ls-normal: 0;
 
-  --fw-regular: 400;
   --fw-medium: 500;
   --fw-bold: 700;
 }
@@ -165,13 +159,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .btn-blue:hover { background: #3367d6; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(66,133,244,0.35); }
 .btn-blue:active { transform: translateY(0); box-shadow: none; }
-
-.btn-outline {
-  border: 1px solid var(--border-strong);
-  color: var(--text-2);
-  background: transparent;
-}
-.btn-outline:hover { border-color: var(--text-3); background: var(--bg-hover); }
 
 /* ===================================================
    HEADER - Floating pill nav
@@ -433,7 +420,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border-radius: var(--radius-pill);
 }
 .ext-live { background: rgba(52,168,83,0.15); color: var(--g-green); }
-.ext-soon-tag { background: rgba(255,255,255,0.06); color: var(--text-4); }
 .ext-body p { color: var(--text-3); font-size: var(--fs-small); line-height: var(--lh-loose); margin-bottom: 20px; flex: 1; }
 .ext-details { list-style: none; margin-bottom: 16px; padding: 0; }
 .ext-details li { font-size: var(--fs-small); color: var(--text-3); padding: 3px 0; }
@@ -448,23 +434,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   transition: gap 0.2s var(--ease);
 }
 .ext-link:hover { gap: 8px; }
-.ext-soon { opacity: 0.6; }
-.ext-soon:hover { opacity: 1; }
-
-/* Coming soon dots */
-.art-dots {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  padding: 0 24px;
-}
-.art-dots span {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-}
-.art-dots span:nth-child(3n) { background: var(--g-blue); box-shadow: 0 0 12px rgba(66,133,244,0.4); }
-.art-dots span:nth-child(5n) { background: var(--g-yellow); }
 
 /* ===================================================
    EXTENSION DETAIL PAGE
@@ -952,6 +921,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .header-toggle { display: none; }
   .about-inner { grid-template-columns: 1fr 1fr; }
   .footer-inner { grid-template-columns: 1.2fr 2fr; }
+}
+
+/* Large desktop (≥1025px) */
+@media (min-width: 1025px) {
+  .ext-detail { padding: 140px 0 100px; }
+  .ext-detail-card { padding: 48px; }
 }
 
 /* Ultra-wide (≥1440px) */

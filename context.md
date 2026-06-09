@@ -4,7 +4,7 @@
 
 ## 1. System Overview & Strategic Intent
 
-**What it is:** JIT is a small studio brand with a marketing website and two Chrome Manifest V3 extensions. The website serves as landing page, extension showcase, developer portfolio, and contact gateway. The extensions (MutedHue, Refreshner) are privacy-first tools that do one thing well.
+**What it is:** JIT is a small studio brand with a marketing website and three Chrome Manifest V3 extensions. The website serves as landing page, extension showcase, developer portfolio, and contact gateway. The extensions (MutedHue, Refreshner, Goofanizer) are privacy-first tools that do one thing well.
 
 **Who it's for:** End-users who want minimal, respectful browser extensions. Developers evaluating open-source Chrome extension patterns.
 
@@ -29,7 +29,7 @@
 | **Chrome Ext** | Manifest V3 | MV3 | content_scripts, service_worker (`background.js`), action popup |
 | **Hosting** | GitHub Pages | — | Static HTML at root, no build step |
 | **Security** | `_headers` (GitHub Pages) | — | CSP, HSTS, X-Frame-Options, Permissions-Policy |
-| **SEO** | robots.txt + sitemap.xml + JSON-LD | — | AI crawler separation, 4-node `@graph` schema |
+| **SEO** | robots.txt + sitemap.xml + JSON-LD | — | AI crawler separation, 5-node `@graph` schema |
 
 ---
 
@@ -37,7 +37,7 @@
 
 ### Website (Static Site)
 - **Rendering paradigm:** Pure static (no SSR, no SSG framework). Served as flat HTML/CSS/JS.
-- **Routing:** File-based, manual. `index.html` = home, `extension.html` = extensions catalog with download, `descriptions/MutedHue.html` and `descriptions/Refreshner.html` = extension detail pages. In-page anchor navigation (`#about`, `#faq`, etc.) via native `scroll-behavior: smooth`.
+- **Routing:** File-based, manual. `index.html` = home, `extension.html` = extensions catalog with download, `descriptions/MutedHue.html`, `descriptions/Refreshner.html`, and `descriptions/Goofanizer.html` = extension detail pages. In-page anchor navigation (`#about`, `#faq`, etc.) via native `scroll-behavior: smooth`.
 - **Extension download flow:** Click "Add to Chrome" on `extension.html` or "Download Extension" on detail pages -> downloads ZIP file -> install modal appears with step-by-step "Load unpacked" guide for Chrome Developer mode.
 - **State management:** None. No frameworks, no stores, no reactive state. Cookie consent preference persisted in `localStorage` key `jit_cookie_consent`.
 - **Data flow (contact form):** Browser → POST to FormSubmit.io → email to pawansimha.pc@gmail.com. No database, no storage on our end.
@@ -94,12 +94,21 @@ JIT/
 │   ├── index.html              #   Standalone landing page for Refreshner (separate branding)
 │   └── icons/Refreshner.png    #   Extension icon
 │
+├── Goofanizer/                 # Chrome Extension MV3 — responsive device switcher
+│   ├── manifest.json           #   debugger, storage, tabs, activeTab, downloads, windows
+│   ├── background/             #   service-worker.js — debugger attach, emulation, screenshot, ZIP
+│   ├── popup/                  #   popup.html/popup.js/popup.css — device cards, controls, export
+│   ├── utils/                  #   devices.js — 4 device presets (Android, iPhone, Tablet S, iPad Pro)
+│   └── assets/                 #   Icon.png, Android-OS.svg, Apple-IOS.svg, Tablet.svg
+│
 ├── descriptions/               # Extension detail pages
 │   ├── MutedHue.html           #   Full MutedHue detail page with logo, features, how-it-works, privacy, install guide
-│   └── Refreshner.html         #   Full Refreshner detail page with logo, features, how-it-works, privacy, install guide
+│   ├── Refreshner.html         #   Full Refreshner detail page with logo, features, how-it-works, privacy, install guide
+│   └── Goofanizer.html         #   Full Goofanizer detail page with logo, features, how-it-works, privacy, install guide
 │
 ├── MutedHue.zip               # Packaged MutedHue extension ZIP for direct download
 ├── Refreshner.zip             # Packaged Refreshner extension ZIP for direct download
+├── Goofanizer.zip             # Packaged Goofanizer extension ZIP for direct download
 │
 ├── PRD.md                      # Product Requirements Document — personas, OKRs, MoSCoW, user journeys
 ├── README.md                   # Documentation — badges, tech stack, project tree, quick start, roadmap
@@ -107,7 +116,7 @@ JIT/
 ├── LICENSE                     # GNU General Public License v3.0 — full text with copyright header
 │
 ├── robots.txt                  # AI crawler directives — search bots allowed, training scrapers blocked
-├── sitemap.xml                 # SEO sitemap — 4 URLs (/ at 1.0, /extension.html at 0.8, descriptions/* at 0.6)
+├── sitemap.xml                 # SEO sitemap — 5 URLs (/ at 1.0, /extension.html at 0.8, descriptions/* at 0.6)
 ├── site.webmanifest            # PWA manifest — name, theme_color, icons (192 + 512)
 ├── _headers                    # Security headers — HSTS, CSP, X-Frame-Options, Permissions-Policy
 ├── .gitignore                  # Ignores — OS files, editor configs, env secrets, stale partials, *.zip
@@ -123,7 +132,7 @@ JIT/
 - **Color:** All colors must reference CSS custom properties from `:root` (e.g., `var(--g-blue)`, `var(--text-2)`). Never hardcode hex/rgba values inline except in `_headers`, `fonts.css`, or isolated components like `404.html`.
 - **Units:** Use `rem` for text sizing, `px` for borders/outlines, `vw/vh` for viewport-relative spacing, `%` for fluid widths. Never use `em` for font-size (compound scaling risk).
 - **Naming:** BEM-lite. Class names are lowercase-hyphenated (e.g., `.header-brand-text`, `.footer-social`, `.ext-card`). No camelCase CSS classes.
-- **Media queries:** Mobile-first. Breakpoints: `<560px` (small phone), `<640px` (cookie banner), `<768px` (tablet), `≥769px` (laptop/desktop), `≥1025px` (large desktop), `≥1440px` (ultra-wide).
+- **Media queries:** Mobile-first. Breakpoints: `<560px` (small phone), `<640px` (cookie banner), `<768px` (tablet), `≥769px` (laptop/desktop), `≥1440px` (ultra-wide).
 - **JS:** Strict mode IIFE `(function () { 'use strict'; ... })();`. Variables declared with `const` (preferred) or `let` (when reassigned). No `var`. No global namespace pollution.
 
 ### Strict Anti-Patterns
@@ -147,14 +156,14 @@ JIT/
 - `[x]` Floating pill navigation bar (glassmorphism, responsive, hamburger on mobile)
 - `[x]` Hero section with aurora gradient + wave animation (4 colors, equal split, animated `background-position`)
 - `[x]` About section (3-column grid on desktop, logo between text and features on mobile)
-- `[x]` Extensions section (3 cards: MutedHue, Refreshner, Coming Soon)
+- `[x]` Extensions section (3 cards: MutedHue, Refreshner, Goofanizer)
 - `[x]` FAQ accordion (8 questions, single-open, aria-expanded management)
 - `[x]` Developer section (7-link grid, full-width Portfolio button)
 - `[x]` Contact form (FormSubmit.io, serverless POST, disabled-on-submit UX)
 - `[x]` Footer (logo + brand text side-by-side, email, social links, 3-column product/company/legal)
 - `[x]` Extension catalog page (`extension.html`) with version/size details and Chrome Web Store links
-- `[x]` JSON-LD structured data (4-node `@graph`: Organization + Person + 2× SoftwareApplication)
-- `[x]` Open Graph + Twitter Card meta tags (full set on both HTML pages)
+- `[x]` JSON-LD structured data (5-node `@graph`: Organization + Person + 3× SoftwareApplication)
+- `[x]` Open Graph + Twitter Card meta tags (full set on all HTML pages)
 - `[x]` SEO/GEO meta tags (keywords, robots, canonical, googlebot directives)
 - `[x]` Favicon set (32, 192, apple-touch-icon 180) + `site.webmanifest`
 - `[x]` Preload critical assets (Logo.webp, Google Sans woff2 files, fonts.css)
@@ -177,19 +186,21 @@ JIT/
 - `[x]` ZIP download + install modal flow for Chrome Developer mode installation
 - `[x]` "Learn More" links on index.html linking to detail pages
 - `[x]` Structured feature cards, privacy card, and numbered install steps on detail pages
-- `[x]` sitemap.xml updated with 4 URLs
+- `[x]` sitemap.xml updated with 5 URLs
 - `[x]` JSON-LD structured data on extension detail pages (SoftwareApplication schema)
 - `[x]` Responsive breakpoints for ext-detail, feature-grid, install-steps on mobile
 - `[x]` Refreshner version consistency (manifest 2.0.0, website 2.0)
 - `[x]` Site Audit — 0 issues remaining
+- `[x]` Goofanizer extension (responsive device switcher, debugger API, 4 device presets, screenshot/export)
+- `[x]` Goofanizer detail page, catalog card, JSON-LD, sitemap integration
 
 ### `[/]` In-Progress Workloads
 - `[/]` GitHub Pages activation (requires manual click in repo settings)
 
 ### `[ ]` Upcoming Implementations (Next Steps)
 - `[ ]` Deploy live at `https://pawansimha.github.io/JIT/`
-- `[ ]` Submit MutedHue and Refreshner to Chrome Web Store
-- `[ ]` Firefox WebExtension port for both extensions
+- `[ ]` Submit MutedHue, Refreshner, and Goofanizer to Chrome Web Store
+- `[ ]` Firefox WebExtension port for MutedHue and Refreshner (Goofanizer excluded — uses Chrome-specific debugger API)
 - `[ ]` Add Privacy Policy / Terms of Service as dedicated HTML pages (footer links currently point to `PRIVACY.md`)
 - `[ ]` Set up custom FormSubmit thank-you redirect page
 - `[ ]` Add PWA service worker for offline caching

@@ -99,11 +99,16 @@
   var modalTitle = doc.getElementById('modalTitle');
 
   if (installLinks.length && installModal) {
+    var extMap = {
+      mutedhue: { name: 'MutedHue', icon: 'MutedHue/icons/MutedHue.png' },
+      refreshner: { name: 'Refreshner', icon: 'Refreshner/icons/Refreshner.png' },
+      goofanizer: { name: 'Goofanizer', icon: 'Goofanizer/assets/Icon.png' }
+    };
+
     function openInstallModal(ext) {
-      var name = ext === 'mutedhue' ? 'MutedHue' : 'Refreshner';
-      var iconSrc = ext === 'mutedhue' ? 'MutedHue/icons/MutedHue.png' : 'Refreshner/icons/Refreshner.png';
-      if (modalIcon) { modalIcon.src = iconSrc; modalIcon.alt = name; }
-      if (modalTitle) modalTitle.textContent = 'Install ' + name;
+      var entry = extMap[ext] || { name: 'Extension', icon: 'Logo.webp' };
+      if (modalIcon) { modalIcon.src = entry.icon; modalIcon.alt = entry.name; }
+      if (modalTitle) modalTitle.textContent = 'Install ' + entry.name;
       installModal.classList.add('open');
       installModal.setAttribute('aria-hidden', 'false');
       doc.body.style.overflow = 'hidden';
