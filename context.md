@@ -54,7 +54,7 @@
 - **Pattern:** Background service worker + content script + popup. State persisted via `chrome.storage.local`.
 - **Background (`background.js`):** Event-driven message router. Handlers: `startRefresh`, `stopRefresh`, `getState`, `pageReady`, `keywordMatch`. Uses `chrome.alarms` for scheduling tab refreshes. Computes fixed or random intervals. Notifies via `chrome.notifications` on keyword match.
 - **Content script (`content.js`):** Scans page text for keywords on load, reports back to background via `chrome.runtime.sendMessage`. Plays audio alert on match.
-- **Popup (`popup.html/popup.js/popup.css`):** Timer UI with countdown ring (SVG `stroke-dashoffset` animation), interval preset chips, keyword input, hard-refresh toggle, status indicator.
+- **Popup (`popup.html/popup.js/popup.css`):** Light-themed UI with Work Sans font, custom scrollbar, and brand header logo. Timer UI with countdown ring (SVG `stroke-dashoffset` animation), interval preset chips, keyword input, hard-refresh toggle, status indicator. Square layout with sticky header/footer and scrollable content area.
 - **Permissions:** `storage`, `alarms`, `notifications`, `tabs`. Host permissions: `<all_urls>`.
 
 ---

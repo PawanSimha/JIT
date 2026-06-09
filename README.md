@@ -40,7 +40,7 @@ A pitch-black background (`#000`) with Google Sans typography, glassmorphism flo
 
 ### GEO-First Architecture
 
-Every section heading is followed by a concise, descriptive subtitle, optimized for both human readers and AI crawlers. JSON-LD `@graph` (Organization + Person + 2x SoftwareApplication), per-page canonical URLs, Open Graph and Twitter Card meta tags, an AI-friendly `robots.txt`, and a complete `_headers` security policy complete the Generative Engine Optimization layer.
+Every section heading is followed by a concise, descriptive subtitle, optimized for both human readers and AI crawlers. JSON-LD `@graph` (Organization + Person + 3x SoftwareApplication), per-page canonical URLs, Open Graph and Twitter Card meta tags, an AI-friendly `robots.txt`, and a complete `_headers` security policy complete the Generative Engine Optimization layer.
 
 ---
 
