@@ -2,25 +2,25 @@
 
 /* ── Custom Scrollbar ── */
 ::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:rgb(0,27,183)}
+::-webkit-scrollbar-track{background:rgb(233,233,233)}
 ::-webkit-scrollbar-thumb{background:rgb(0,70,255);border-radius:20px}
 ::-webkit-scrollbar-thumb:hover{background:rgb(255,128,64)}
-*{scrollbar-width:thin;scrollbar-color:rgb(0,70,255) rgb(0,27,183)}
+*{scrollbar-width:thin;scrollbar-color:rgb(0,70,255) rgb(233,233,233)}
 
 :root{
-  --bg:rgb(8,10,20);
-  --surface:rgb(0,27,183);
-  --surface2:rgba(0,27,183,0.5);
-  --border:rgba(0,70,255,0.3);
-  --border-active:rgba(0,70,255,0.6);
+  --bg:#f5f5f7;
+  --surface:rgb(233,233,233);
+  --surface2:rgba(0,27,183,0.04);
+  --border:rgba(0,27,183,0.12);
+  --border-active:rgba(0,70,255,0.3);
   --primary:rgb(0,70,255);
   --primary-dark:rgb(0,27,183);
-  --primary-glow:rgba(0,70,255,0.35);
+  --primary-glow:rgba(0,70,255,0.2);
   --accent:rgb(255,128,64);
-  --accent-glow:rgba(255,128,64,0.35);
-  --text:rgb(233,233,233);
-  --text-2:rgba(233,233,233,0.7);
-  --text-3:rgba(233,233,233,0.4);
+  --accent-glow:rgba(255,128,64,0.25);
+  --text:#1a1a2e;
+  --text-2:#6b7280;
+  --text-3:#9ca3af;
   --green:#22C55E;
   --red:#EF4444;
   --radius:18px;
@@ -69,7 +69,7 @@ header h1{
 header h1 .icon-sync{font-size:15px;color:var(--accent)}
 .badge{
   font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;
-  background:var(--primary-dark);border:1px solid var(--border);
+  background:var(--bg);border:1px solid var(--border);
   padding:3px 10px;border-radius:var(--radius-pill);
   color:var(--text-2);max-width:150px;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
@@ -90,7 +90,7 @@ header h1 .icon-sync{font-size:15px;color:var(--accent)}
 #countdownDisplay{display:flex;flex-direction:column;align-items:center;gap:6px}
 #countdownCircle{position:relative;width:58px;height:58px}
 #countdownCircle svg{width:100%;height:100%;transform:rotate(-90deg)}
-#countdownCircle .bg{fill:none;stroke:var(--surface2);stroke-width:3}
+#countdownCircle .bg{fill:none;stroke:var(--border);stroke-width:3}
 #countdownCircle .fg{
   fill:none;stroke:var(--primary);stroke-width:3;stroke-linecap:round;
   transition:stroke-dashoffset 0.4s;stroke-dasharray:163.36;
@@ -99,22 +99,22 @@ header h1 .icon-sync{font-size:15px;color:var(--accent)}
 #countdownText{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;
-  font-family:var(--mono);color:var(--text);
+  font-family:var(--mono);color:var(--primary-dark);
 }
 #statusLabel{font-size:10px;color:var(--text-3);font-weight:500}
 
 /* ── Quick Interval Chips ── */
 .chip-group{display:flex;gap:5px;flex-wrap:wrap}
 .chip{
-  background:var(--surface2);border:1px solid var(--border);
+  background:var(--bg);border:1px solid var(--border);
   color:var(--text-2);padding:5px 12px;border-radius:var(--radius-pill);
   font-size:11px;font-weight:500;cursor:pointer;font-family:var(--font);
   transition:all var(--transition);
 }
-.chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(255,128,64,0.08)}
+.chip:hover{border-color:var(--accent);color:var(--accent);background:rgba(255,128,64,0.06)}
 .chip.active{
-  background:var(--accent);border-color:var(--accent);color:#fff;
-  box-shadow:0 2px 12px var(--accent-glow);
+  background:var(--primary);border-color:var(--primary);color:#fff;
+  box-shadow:0 2px 12px var(--primary-glow);
 }
 
 /* ── Fields ── */
@@ -122,7 +122,7 @@ header h1 .icon-sync{font-size:15px;color:var(--accent)}
 .field{display:flex;flex-direction:column;gap:2px;flex:1}
 .field span{font-size:8px;color:var(--text-3);text-transform:uppercase;letter-spacing:0.08em;font-weight:600}
 .field input{
-  background:var(--primary-dark);border:1px solid var(--border);
+  background:var(--bg);border:1px solid var(--border);
   color:var(--text);padding:6px 10px;border-radius:var(--radius-xs);
   font-size:11px;font-family:var(--font);
   width:100%;outline:none;transition:border var(--transition),box-shadow var(--transition);
@@ -134,7 +134,7 @@ header h1 .icon-sync{font-size:15px;color:var(--accent)}
 .toggle-row input{display:none}
 .toggle-track{
   width:30px;height:16px;
-  background:var(--primary-dark);border-radius:var(--radius-pill);
+  background:var(--bg);border-radius:var(--radius-pill);
   position:relative;transition:background var(--transition);border:1px solid var(--border);
 }
 .toggle-knob{
@@ -148,11 +148,11 @@ header h1 .icon-sync{font-size:15px;color:var(--accent)}
 /* ── Radio ── */
 .radio-row{display:flex;gap:14px;font-size:11px}
 .radio-row label{display:flex;align-items:center;gap:5px;cursor:pointer;color:var(--text-2)}
-.radio-row input{accent-color:var(--accent);width:13px;height:13px}
+.radio-row input{accent-color:var(--primary);width:13px;height:13px}
 
 /* ── Keyword Input ── */
 #keywordInput{
-  flex:1;background:var(--primary-dark);border:1px solid var(--border);
+  flex:1;background:var(--bg);border:1px solid var(--border);
   color:var(--text);padding:6px 10px;border-radius:var(--radius-xs);
   font-size:11px;font-family:var(--font);outline:none;
   transition:border var(--transition),box-shadow var(--transition);
@@ -160,11 +160,11 @@ header h1 .icon-sync{font-size:15px;color:var(--accent)}
 #keywordInput:focus{border-color:var(--primary);box-shadow:0 0 0 2px var(--primary-glow)}
 #keywordInput::placeholder{color:var(--text-3)}
 .btn-sm{
-  background:var(--accent);border:none;color:#fff;width:28px;height:28px;
+  background:var(--primary);border:none;color:#fff;width:28px;height:28px;
   border-radius:var(--radius-xs);font-size:16px;font-weight:600;
   cursor:pointer;display:flex;align-items:center;justify-content:center;
   transition:all var(--transition);flex-shrink:0;
-  box-shadow:0 2px 8px var(--accent-glow);
+  box-shadow:0 2px 8px var(--primary-glow);
 }
 .btn-sm:hover{opacity:0.85;transform:scale(1.05)}
 
@@ -172,7 +172,7 @@ header h1 .icon-sync{font-size:15px;color:var(--accent)}
 .tag-list{display:flex;gap:4px;flex-wrap:wrap;min-height:18px}
 .tag{
   display:flex;align-items:center;gap:3px;
-  background:var(--primary-dark);border:1px solid var(--border);
+  background:var(--surface);border:1px solid var(--border);
   padding:2px 7px 2px 9px;border-radius:var(--radius-pill);font-size:10px;font-weight:500;
 }
 .tag .remove{color:var(--red);cursor:pointer;font-size:12px;line-height:1;padding:0 2px;opacity:0.7;transition:opacity var(--transition)}
