@@ -24,7 +24,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
   <!-- ── Primary Meta ── -->
   <title>JIT - Browser Extension Studio | Privacy-First Chrome Extensions by Pawan Simha R</title>
   <meta name="description" content="JIT builds clean, focused browser extensions, MutedHue and Refreshner, with zero data collection, open source code, and a quiet, powerful design philosophy. Download free Chrome extensions built by Pawan Simha R at Sapthagiri NPS University." />
-  <meta name="keywords" content="JIT, browser extensions, Chrome extensions, MutedHue, Refreshner, Goofanizer, privacy-first extensions, open source extensions, Pawan Simha, Sapthagiri NPS University, text selection color, auto refresh page monitor, responsive device switcher, viewport emulator" />
+  <meta name="keywords" content="JIT, browser extensions, Chrome extensions, MutedHue, Refreshner, Goofanizer, Imageination, privacy-first extensions, open source extensions, Pawan Simha, Sapthagiri NPS University, image downloader, batch image download, text selection color, auto refresh page monitor, responsive device switcher, viewport emulator" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Pawan Simha R" />
   <meta name="theme-color" content="#000000" />
@@ -165,6 +165,24 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
           "@id": "https://github.com/PawanSimha/JIT#person"
         },
         "permissions": ["debugger", "storage", "tabs", "activeTab", "downloads", "windows"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://github.com/PawanSimha/JIT#imageination",
+        "name": "Imageination",
+        "applicationCategory": "BrowserExtension",
+        "operatingSystem": "Chrome",
+        "description": "One-click download any image from any webpage. Scans and categorizes PNG, JPEG, WebP, SVG, ICO and more, with batch download support.",
+        "softwareVersion": "1.0.0",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@id": "https://github.com/PawanSimha/JIT#person"
+        },
+        "permissions": ["activeTab", "downloads", "storage"]
       }
     ]
   }
@@ -285,8 +303,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       <p class="eyebrow">Extensions</p>
       <h2 class="section-title" id="ext-title">What tools does <span class="text-gradient">JIT</span> offer?</h2>
       <p class="section-sub">
-        <strong>JIT offers three free Chrome extensions with more in development.</strong>
-        MutedHue replaces harsh blue selection with adaptive grey, Refreshner auto-refreshes pages and monitors keywords, and Goofanizer emulates mobile and tablet viewports. All three are open source and collect zero data.
+        <strong>JIT offers four free Chrome extensions with more in development.</strong>
+        MutedHue replaces harsh blue selection with adaptive grey, Refreshner auto-refreshes pages and monitors keywords, and Goofanizer emulates mobile and tablet viewports. All four are open source and collect zero data.
       </p>
 
       <div class="ext-grid">
@@ -329,6 +347,20 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
             </div>
             <p>Instantly emulate mobile and tablet viewports with one click. Switch between 4 predefined device presets, rotate, capture screenshots, and batch export.</p>
             <a href="descriptions/Goofanizer.html" class="ext-link" aria-label="Learn more about Goofanizer">Learn more &rsaquo;</a>
+          </div>
+        </article>
+
+        <article class="ext-card">
+          <div class="ext-art ext-art-4">
+            <img src="Imageination/icons/Imageination.png" alt="Imageination" class="ext-logo" width="96" height="96" loading="lazy" />
+          </div>
+          <div class="ext-body">
+            <div class="ext-head">
+              <h3>Imageination</h3>
+              <span class="ext-status ext-live">Published</span>
+            </div>
+            <p>One-click download any image from any webpage. Scans and categorizes images by type (PNG, JPEG, WebP, SVG, ICO, and more), then download individually or in batches.</p>
+            <a href="descriptions/Imageination.html" class="ext-link" aria-label="Learn more about Imageination">Learn more &rsaquo;</a>
           </div>
         </article>
       </div>

@@ -102,7 +102,8 @@
     const extMap = {
       mutedhue: { name: 'MutedHue', icon: 'MutedHue/icons/MutedHue.png' },
       refreshner: { name: 'Refreshner', icon: 'Refreshner/icons/Refreshner.png' },
-      goofanizer: { name: 'Goofanizer', icon: 'Goofanizer/assets/Icon.png' }
+      goofanizer: { name: 'Goofanizer', icon: 'Goofanizer/assets/Icon.png' },
+      imageination: { name: 'Imageination', icon: 'Imageination/icons/Imageination.png' }
     };
 
     function openInstallModal(ext) {

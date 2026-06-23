@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Imageination</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="h-left"><img class="h-icon" src="icons/icon.png" alt="" /> <span class="h-title">Imageination</span></div>
+    <div class="h-right">
+      <button class="dl-all-h" id="dlAllBtn" hidden>&darr; All</button>
+      <span class="h-badge" id="countBadge">0</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="nav" id="sidebar">
+      <div class="nav-inner" id="sidebarItems"></div>
+    </nav>
+
+    <div class="main">
+      <div class="p-head" id="panelHeader">
+        <span class="p-title" id="panelTitle">Images</span>
+        <button class="da" id="panelDlAll">Download All</button>
+      </div>
+      <div class="grid" id="imgGrid">
+        <div class="grid-msg" id="gridMsg">Scanning...</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
