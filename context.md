@@ -29,7 +29,7 @@
 | **Chrome Ext** | Manifest V3 | MV3 | content_scripts, service_worker (`background.js`), action popup |
 | **Hosting** | GitHub Pages | — | Static HTML at root, no build step |
 | **Security** | `_headers` (GitHub Pages) | — | CSP, HSTS, X-Frame-Options, Permissions-Policy |
-| **SEO** | robots.txt + sitemap.xml + JSON-LD | — | AI crawler separation, 5-node `@graph` schema |
+| **SEO** | robots.txt + sitemap.xml + JSON-LD | — | AI crawler separation, 6-node `@graph` schema |
 
 ---
 
@@ -135,7 +135,7 @@ JIT/
 ├── LICENSE                     # GNU General Public License v3.0 — full text with copyright header
 │
 ├── robots.txt                  # AI crawler directives — search bots allowed, training scrapers blocked
-├── sitemap.xml                 # SEO sitemap — 5 URLs (/ at 1.0, /extension.html at 0.8, descriptions/* at 0.6)
+├── sitemap.xml                 # SEO sitemap — 6 URLs (/ at 1.0, /extension.html at 0.8, descriptions/* at 0.6)
 ├── site.webmanifest            # PWA manifest — name, theme_color, icons (192 + 512)
 ├── _headers                    # Security headers — HSTS, CSP, X-Frame-Options, Permissions-Policy
 ├── .gitignore                  # Ignores — OS files, editor configs, env secrets, stale partials, *.zip
@@ -201,11 +201,11 @@ JIT/
 - `[x]` `:focus-visible` outlines enhanced per element type
 - `[x]` MutedHue extension (content script, luminance detection, Shadow DOM support)
 - `[x]` Refreshner extension (background service worker, alarm scheduler, keyword monitoring, popup UI)
-- `[x]` Extension detail pages (`descriptions/MutedHue.html`, `descriptions/Refreshner.html`) with full features, privacy, and install guide
+- `[x]` Extension detail pages (all 4: MutedHue, Refreshner, Goofanizer, Imageination) with full features, privacy, and install guide
 - `[x]` ZIP download + install modal flow for Chrome Developer mode installation
 - `[x]` "Learn More" links on index.html linking to detail pages
 - `[x]` Structured feature cards, privacy card, and numbered install steps on detail pages
-- `[x]` sitemap.xml updated with 5 URLs
+- `[x]` sitemap.xml updated with 6 URLs
 - `[x]` JSON-LD structured data on extension detail pages (SoftwareApplication schema)
 - `[x]` Responsive breakpoints for ext-detail, feature-grid, install-steps on mobile
 - `[x]` Refreshner version consistency (manifest 2.0.0, website 2.0)

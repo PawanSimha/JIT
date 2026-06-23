@@ -69,8 +69,8 @@ JIT is a small studio that builds clean, focused browser extensions and a brand 
 | Refreshner — countdown timer in popup | SVG progress ring | ✅ Shipped |
 | Marketing website — landing page | `index.html` | ✅ Shipped |
 | Marketing website — extensions listing page | `extension.html` | ✅ Shipped |
-| Marketing website — extension detail pages | `descriptions/MutedHue.html`, `descriptions/Refreshner.html`, `descriptions/Goofanizer.html` | ✅ Shipped |
-| ZIP download + install modal for Developer mode | `MutedHue.zip`, `Refreshner.zip`, `Goofanizer.zip` + modal | ✅ Shipped |
+| Marketing website — extension detail pages | `descriptions/MutedHue.html`, `descriptions/Refreshner.html`, `descriptions/Goofanizer.html`, `descriptions/Imageination.html` | ✅ Shipped |
+| ZIP download + install modal for Developer mode | `MutedHue.zip`, `Refreshner.zip`, `Goofanizer.zip`, `Imageination.zip` + modal | ✅ Shipped |
 | Goofanizer extension — responsive device switcher | Chrome MV3 `chrome.debugger` API | ✅ Shipped (v1.0.0) |
 | Goofanizer — 4 device presets (Android, iPhone, Tablet S, iPad Pro) | `utils/devices.js` | ✅ Shipped |
 | Goofanizer — rotate viewport orientation | `background/service-worker.js` — Emulation.setDeviceMetricsOverride | ✅ Shipped |

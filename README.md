@@ -204,7 +204,7 @@ JIT/
 ├── Imageination.zip           # Packaged Imageination extension for download
 │
 ├── robots.txt                 # AI crawler directives (search allowed, training scrapers blocked)
-├── sitemap.xml                # SEO sitemap (5 URLs with priority + lastmod)
+├── sitemap.xml                # SEO sitemap (6 URLs with priority + lastmod)
 ├── _headers                   # Security headers (CSP, HSTS, X-Frame-Options, Permissions-Policy)
 ├── site.webmanifest           # PWA manifest (name, theme_color, icons 192 + 512)
 ├── .gitignore                 # OS files, editor configs, env secrets, stale partials, *.zip

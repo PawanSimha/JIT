@@ -384,7 +384,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .ext-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: clamp(16px, 2.5vw, 24px);
   text-align: left;
 }
@@ -717,7 +717,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   overflow: hidden;
   transition: max-height 0.35s var(--ease);
 }
-.faq-item.open .faq-a { max-height: 240px; }
+.faq-item.open .faq-a { max-height: 400px; }
 .faq-a-inner {
   padding: 0 0 clamp(16px, 2vw, 22px);
   color: var(--text-3);
@@ -910,11 +910,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ===================================================
    RESPONSIVE - Mobile-first breakpoints
 =================================================== */
-
-/* Tablet portrait (≥640px) */
-@media (min-width: 640px) {
-  .dev-links { grid-template-columns: repeat(3, 1fr); }
-}
 
 /* Tablet landscape / small laptop (≥769px) */
 @media (min-width: 769px) {

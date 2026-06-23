@@ -1,3 +1,4 @@
+'use strict';
 const DEVICES = [
   {
     id: 'android1',
