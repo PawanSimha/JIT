@@ -4,7 +4,7 @@
 
 ## 1. System Overview & Strategic Intent
 
-**What it is:** JIT is a small studio brand with a marketing website and three Chrome Manifest V3 extensions. The website serves as landing page, extension showcase, developer portfolio, and contact gateway. The extensions (MutedHue, Refreshner, Goofanizer) are privacy-first tools that do one thing well.
+**What it is:** JIT is a small studio brand with a marketing website and four Chrome Manifest V3 extensions. The website serves as landing page, extension showcase, developer portfolio, and contact gateway. The extensions (MutedHue, Refreshner, Goofanizer, Imageination) are privacy-first tools that do one thing well.
 
 **Who it's for:** End-users who want minimal, respectful browser extensions. Developers evaluating open-source Chrome extension patterns.
 
@@ -37,7 +37,7 @@
 
 ### Website (Static Site)
 - **Rendering paradigm:** Pure static (no SSR, no SSG framework). Served as flat HTML/CSS/JS.
-- **Routing:** File-based, manual. `index.html` = home, `extension.html` = extensions catalog with download, `descriptions/MutedHue.html`, `descriptions/Refreshner.html`, and `descriptions/Goofanizer.html` = extension detail pages. In-page anchor navigation (`#about`, `#faq`, etc.) via native `scroll-behavior: smooth`.
+- **Routing:** File-based, manual. `index.html` = home, `extension.html` = extensions catalog with download, `descriptions/MutedHue.html`, `descriptions/Refreshner.html`, `descriptions/Goofanizer.html`, and `descriptions/Imageination.html` = extension detail pages. In-page anchor navigation (`#about`, `#faq`, etc.) via native `scroll-behavior: smooth`.
 - **Extension download flow:** Click "Add to Chrome" on `extension.html` or "Download Extension" on detail pages -> downloads ZIP file -> install modal appears with step-by-step "Load unpacked" guide for Chrome Developer mode.
 - **State management:** None. No frameworks, no stores, no reactive state. Cookie consent preference persisted in `localStorage` key `jit_cookie_consent`.
 - **Data flow (contact form):** Browser → POST to FormSubmit.io → email to pawansimha.pc@gmail.com. No database, no storage on our end.
@@ -56,6 +56,14 @@
 - **Content script (`content.js`):** Scans page text for keywords on load, reports back to background via `chrome.runtime.sendMessage`. Plays audio alert on match.
 - **Popup (`popup.html/popup.js/popup.css`):** Light-themed UI with Work Sans font, custom scrollbar, and brand header logo. Timer UI with countdown ring (SVG `stroke-dashoffset` animation), interval preset chips, keyword input, hard-refresh toggle, status indicator. Square layout with sticky header/footer and scrollable content area.
 - **Permissions:** `storage`, `alarms`, `notifications`, `tabs`. Host permissions: `<all_urls>`.
+
+### Imageination Extension (MV3)
+- **Pattern:** Content script + popup + background service worker. No `storage` or telemetry. Zero-config popup with sidebar layout.
+- **Content script (`content.js`):** Scans page DOM for all media sources — `<img>`, `<picture>`/`<source>`, inline `<svg>` (serialized to data URLs), `<link rel="icon">`, CSS `background-image`, `<video>` (sources + posters), and `<audio>` elements. Deduplicates by normalized URL. Categorizes into 21 format groups (PNG, JPEG, JPG, WebP, SVG, GIF, AVIF, ICO, MP4, WebM, MOV, FLV, MP3, M4A, WAV, OGG, AAC, WebA) plus 3 meta-categories (Favicon, Video, Audio).
+- **Popup (`popup.html/popup.js/popup.css`):** Dark theme, 520x540px. Left sidebar (115px) lists all available categories. Right panel shows a 2-column scrollable grid of cards. Each card shows thumbnail (image/video poster/icon), filename, dimensions, type badge, and Download button. Header has a master `↓ All` button. Panel has a `Download All` button per category.
+- **Background (`background.js`):** Minimal — only handles individual `downloadImage` messages via `chrome.downloads.download`.
+- **Batch download:** ZIP built in the popup context using a pure-JS `ZipWriter` (CRC-32, store method). Fetches all files directly from the popup using extension host permissions, packages them into a valid ZIP blob, and downloads via `chrome.downloads.download`. 50MB per-file cap. Skips CORS-restricted or failed fetches gracefully.
+- **Permissions:** `activeTab`, `downloads`. Host permissions: `<all_urls>`.
 
 ---
 
@@ -101,14 +109,25 @@ JIT/
 │   ├── utils/                  #   devices.js — 4 device presets (Android, iPhone, Tablet S, iPad Pro)
 │   └── assets/                 #   Icon.png, Android-OS.svg, Apple-IOS.svg, Tablet.svg
 │
+├── Imageination/               # Chrome Extension MV3 — media scanner + downloader
+│   ├── manifest.json           #   activeTab, downloads, host_permissions all_urls
+│   ├── background.js           #   Minimal — routes downloadImage messages
+│   ├── content.js              #   Full page scan: img, picture, svg, icon, bg, video, audio
+│   ├── popup.html              #   Sidebar + grid layout, 520x540px
+│   ├── popup.js                #   ZipWriter, batch download, 21-type categorization
+│   ├── popup.css               #   Dark theme, 2-column grid, custom scrollbar
+│   └── icons/icon.png          #   Extension icon (300x300, 32-bit ARGB)
+│
 ├── descriptions/               # Extension detail pages
 │   ├── MutedHue.html           #   Full MutedHue detail page with logo, features, how-it-works, privacy, install guide
 │   ├── Refreshner.html         #   Full Refreshner detail page with logo, features, how-it-works, privacy, install guide
-│   └── Goofanizer.html         #   Full Goofanizer detail page with logo, features, how-it-works, privacy, install guide
+│   ├── Goofanizer.html         #   Full Goofanizer detail page with logo, features, how-it-works, privacy, install guide
+│   └── Imageination.html       #   Full Imageination detail page with logo, features, how-it-works, privacy, install guide
 │
 ├── MutedHue.zip               # Packaged MutedHue extension ZIP for direct download
 ├── Refreshner.zip             # Packaged Refreshner extension ZIP for direct download
 ├── Goofanizer.zip             # Packaged Goofanizer extension ZIP for direct download
+├── Imageination.zip           # Packaged Imageination extension ZIP for direct download
 │
 ├── PRD.md                      # Product Requirements Document — personas, OKRs, MoSCoW, user journeys
 ├── README.md                   # Documentation — badges, tech stack, project tree, quick start, roadmap
@@ -156,19 +175,19 @@ JIT/
 - `[x]` Floating pill navigation bar (glassmorphism, responsive, hamburger on mobile)
 - `[x]` Hero section with aurora gradient + wave animation (4 colors, equal split, animated `background-position`)
 - `[x]` About section (3-column grid on desktop, logo between text and features on mobile)
-- `[x]` Extensions section (3 cards: MutedHue, Refreshner, Goofanizer)
+- `[x]` Extensions section (4 cards: MutedHue, Refreshner, Goofanizer, Imageination)
 - `[x]` FAQ accordion (8 questions, single-open, aria-expanded management)
 - `[x]` Developer section (7-link grid, full-width Portfolio button)
 - `[x]` Contact form (FormSubmit.io, serverless POST, disabled-on-submit UX)
 - `[x]` Footer (logo + brand text side-by-side, email, social links, 3-column product/company/legal)
 - `[x]` Extension catalog page (`extension.html`) with version/size details and Chrome Web Store links
-- `[x]` JSON-LD structured data (5-node `@graph`: Organization + Person + 3× SoftwareApplication)
+- `[x]` JSON-LD structured data (6-node `@graph`: Organization + Person + 4× SoftwareApplication)
 - `[x]` Open Graph + Twitter Card meta tags (full set on all HTML pages)
 - `[x]` SEO/GEO meta tags (keywords, robots, canonical, googlebot directives)
 - `[x]` Favicon set (32, 192, apple-touch-icon 180) + `site.webmanifest`
 - `[x]` Preload critical assets (Logo.webp, Google Sans woff2 files, fonts.css)
 - `[x]` `robots.txt` with 2026 AI crawler separation (search allowed, training scrapers blocked)
-- `[x]` `sitemap.xml` (2 URLs with priority + lastmod)
+- `[x]` `sitemap.xml` (5 URLs with priority + lastmod)
 - `[x]` `_headers` with security headers (CSP, HSTS, X-Frame-Options, Permissions-Policy)
 - `[x]` `404.html` branded error page (dark theme, Google Sans, "Back to Home" button)
 - `[x]` Cookie consent banner (localStorage, Accept/Decline, visible on first visit only)
@@ -193,13 +212,16 @@ JIT/
 - `[x]` Site Audit — 0 issues remaining
 - `[x]` Goofanizer extension (responsive device switcher, debugger API, 4 device presets, screenshot/export)
 - `[x]` Goofanizer detail page, catalog card, JSON-LD, sitemap integration
+- `[x]` Imageination extension (media scanner, sidebar popup, 21-type categorization, ZipWriter batch download)
+- `[x]` Imageination detail page, catalog card, JSON-LD, sitemap integration
+- `[x]` Comprehensive multi-perspective audit — 0 critical/high issues
 
 ### `[/]` In-Progress Workloads
 - `[/]` GitHub Pages activation (requires manual click in repo settings)
 
 ### `[ ]` Upcoming Implementations (Next Steps)
 - `[ ]` Deploy live at `https://pawansimha.github.io/JIT/`
-- `[ ]` Submit MutedHue, Refreshner, and Goofanizer to Chrome Web Store
+- `[ ]` Submit MutedHue, Refreshner, Goofanizer, and Imageination to Chrome Web Store
 - `[ ]` Firefox WebExtension port for MutedHue and Refreshner (Goofanizer excluded — uses Chrome-specific debugger API)
 - `[ ]` Add Privacy Policy / Terms of Service as dedicated HTML pages (footer links currently point to `PRIVACY.md`)
 - `[ ]` Set up custom FormSubmit thank-you redirect page

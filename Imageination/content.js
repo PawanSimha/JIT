@@ -26,9 +26,6 @@
     return 'other';
   }
 
-  function isVideoType(t) { return VID_EXTS.includes(t); }
-  function isAudioType(t) { return AUD_EXTS.includes(t); }
-
   const seen = new Set();
 
   function collect(src, alt, w, h, from, poster) {

@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "Imageination",
   "version": "1.0.0",
-  "description": "One-click download any image from any webpage — PNG, JPEG, WebP, SVG, ICO and more.",
-  "permissions": ["activeTab", "downloads", "storage"],
+  "description": "Download images, videos and audio from any webpage: PNG, JPEG, WebP, SVG, GIF, AVIF, ICO, MP4, WebM, MP3 and more.",
+  "permissions": ["activeTab", "downloads"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"

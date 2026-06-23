@@ -1,5 +1,152 @@
 'use strict';
 
+// ---- ZipWriter (inlined for popup context) ----
+class ZipWriter {
+  constructor() {
+    this.files = [];
+    this._table = this._makeCRC32Table();
+  }
+  _makeCRC32Table() {
+    const t = new Uint32Array(256);
+    for (let i = 0; i < 256; i++) {
+      let c = i;
+      for (let j = 0; j < 8; j++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+      t[i] = c;
+    }
+    return t;
+  }
+  _crc32(data) {
+    const t = this._table;
+    let c = 0xFFFFFFFF;
+    for (let i = 0; i < data.length; i++) c = t[(c ^ data[i]) & 0xFF] ^ (c >>> 8);
+    return (c ^ 0xFFFFFFFF) >>> 0;
+  }
+  get fileCount() { return this.files.length; }
+  add(name, data) {
+    if (data instanceof ArrayBuffer) data = new Uint8Array(data);
+    const enc = new TextEncoder().encode(name);
+    this.files.push({ name: enc, data, crc: this._crc32(data) });
+  }
+  _fileHeader(name, crc, size) {
+    const b = new Uint8Array(30 + name.length);
+    const d = new DataView(b.buffer);
+    d.setUint32(0, 0x04034b50, true);
+    d.setUint16(4, 20, true);
+    d.setUint16(6, 0x0800, true);
+    d.setUint16(8, 0, true);
+    d.setUint16(10, 0, true);
+    d.setUint16(12, 0, true);
+    d.setUint32(14, crc, true);
+    d.setUint32(18, size, true);
+    d.setUint32(22, size, true);
+    d.setUint16(26, name.length, true);
+    d.setUint16(28, 0, true);
+    b.set(name, 30);
+    return b;
+  }
+  _cdEntry(name, crc, size, off) {
+    const b = new Uint8Array(46 + name.length);
+    const d = new DataView(b.buffer);
+    d.setUint32(0, 0x02014b50, true);
+    d.setUint16(4, 20, true);
+    d.setUint16(6, 20, true);
+    d.setUint16(8, 0x0800, true);
+    d.setUint16(10, 0, true);
+    d.setUint16(12, 0, true);
+    d.setUint16(14, 0, true);
+    d.setUint32(16, crc, true);
+    d.setUint32(20, size, true);
+    d.setUint32(24, size, true);
+    d.setUint16(28, name.length, true);
+    d.setUint16(30, 0, true);
+    d.setUint16(32, 0, true);
+    d.setUint16(34, 0, true);
+    d.setUint16(36, 0, true);
+    d.setUint32(38, 0, true);
+    d.setUint32(42, off, true);
+    b.set(name, 46);
+    return b;
+  }
+  generate() {
+    const parts = [];
+    let off = 0;
+    const offsets = [];
+    for (const f of this.files) {
+      offsets.push(off);
+      parts.push(this._fileHeader(f.name, f.crc, f.data.length));
+      parts.push(f.data);
+      off += 30 + f.name.length + f.data.length;
+    }
+    const cdStart = off;
+    const cd = [];
+    for (let i = 0; i < this.files.length; i++) {
+      const f = this.files[i];
+      cd.push(this._cdEntry(f.name, f.crc, f.data.length, offsets[i]));
+      off += 46 + f.name.length;
+    }
+    const cdSize = off - cdStart;
+    const eocd = new Uint8Array(22);
+    const d = new DataView(eocd.buffer);
+    d.setUint32(0, 0x06054b50, true);
+    d.setUint16(4, 0, true);
+    d.setUint16(6, 0, true);
+    d.setUint16(8, this.files.length, true);
+    d.setUint16(10, this.files.length, true);
+    d.setUint32(12, cdSize, true);
+    d.setUint32(16, cdStart, true);
+    d.setUint16(20, 0, true);
+    return new Blob([...parts, ...cd, eocd], { type: 'application/zip' });
+  }
+}
+
+function sanitizeFilename(name) {
+  return name.replace(/[<>:"/\\|?*\x00-\x1f]/g, '_').substring(0, 200);
+}
+
+function zipFilenameFromUrl(url, ext, index) {
+  if (url.startsWith('data:')) {
+    const prefix = ['mp4','webm','mov','flv'].includes(ext) ? 'video' : ['mp3','m4a','wav','ogg','aac','weba'].includes(ext) ? 'audio' : 'image';
+    return `${prefix}_${index}.${ext === 'jpeg' ? 'jpg' : ext}`;
+  }
+  try {
+    const u = new URL(url);
+    const parts = u.pathname.split('/');
+    let name = parts[parts.length - 1] || `media_${index}`;
+    if (!name.includes('.')) name += `.${ext}`;
+    return sanitizeFilename(name);
+  } catch {
+    return `media_${index}.${ext}`;
+  }
+}
+
+async function downloadBatch(items, imageType) {
+  const zip = new ZipWriter();
+  let errors = 0;
+  const MAX_SIZE = 50 * 1024 * 1024;
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    try {
+      const resp = await fetch(item.src);
+      if (!resp.ok) { errors++; continue; }
+      const buf = await resp.arrayBuffer();
+      if (buf.byteLength > MAX_SIZE) { errors++; continue; }
+      const fn = zipFilenameFromUrl(item.src, item.type || 'img', i + 1);
+      zip.add(fn, new Uint8Array(buf));
+    } catch {
+      errors++;
+    }
+  }
+  if (zip.fileCount === 0) {
+    throw new Error(`Could not fetch any files (${errors} failed)`);
+  }
+  const blob = zip.generate();
+  const url = URL.createObjectURL(blob);
+  const ext = imageType && imageType !== 'all' ? `_${imageType}` : '';
+  const zipName = `Imageination${ext}.zip`;
+  await chrome.downloads.download({ url, filename: zipName, saveAs: false });
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+
 let allItems = {};
 let activeType = 'all';
 const typeOrder = [
@@ -161,33 +308,35 @@ function renderGrid() {
   });
 }
 
+async function doBatchDownload(items, imageType, btn, doneText) {
+  if (!items.length) return;
+  btn.disabled = true;
+  btn.textContent = `Downloading ${items.length}...`;
+  try {
+    await downloadBatch(items, imageType);
+    btn.textContent = doneText;
+  } catch (e) {
+    btn.textContent = 'Failed';
+  }
+  setTimeout(() => { btn.textContent = btn.dataset.restore || 'Download All'; btn.disabled = false; }, 2000);
+}
+
 function renderAll() {
   const total = allItems.all?.length||0;
   const dlAll = $('#dlAllBtn');
   dlAll.hidden = false;
   dlAll.textContent = `\u2193 All (${total})`;
-  dlAll.onclick = async () => {
-    const all = allItems.all||[];
-    if (!all.length) return;
-    dlAll.disabled = true;
-    dlAll.textContent = `Downloading ${all.length}...`;
-    await chrome.runtime.sendMessage({type:'downloadAll', images:all});
-    dlAll.textContent = `Done ${all.length}`;
-    setTimeout(() => { dlAll.textContent=`\u2193 All (${total})`; dlAll.disabled=false; }, 2000);
-  };
+  dlAll.dataset.restore = `\u2193 All (${total})`;
+  dlAll.onclick = () => doBatchDownload(allItems.all||[], 'all', dlAll, `Done ${total}`);
   activeType = 'all';
   renderSidebar();
   renderGrid();
-  $('#panelDlAll').onclick = async () => {
-    const type = $('#panelDlAll').dataset.type;
+  const pBtn = $('#panelDlAll');
+  pBtn.dataset.restore = 'Download All';
+  pBtn.onclick = () => {
+    const type = pBtn.dataset.type;
     const items = allItems[type]||[];
-    if (!items.length) return;
-    const btn = $('#panelDlAll');
-    btn.disabled = true;
-    btn.textContent = `Downloading ${items.length}...`;
-    await chrome.runtime.sendMessage({type:'downloadAllOfType', images:items, imageType:type});
-    btn.textContent = `Done ${items.length}`;
-    setTimeout(() => { btn.textContent='Download All'; btn.disabled=false; }, 2000);
+    doBatchDownload(items, type, pBtn, `Done ${items.length}`);
   };
 }
 

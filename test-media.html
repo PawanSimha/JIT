@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Imageination Test Fixture</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>I</text></svg>" />
+<style>
+  body{font-family:sans-serif;background:#111;color:#eee;max-width:800px;margin:0 auto;padding:20px}
+  h2{border-bottom:1px solid #333;padding-bottom:6px;margin-top:30px}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:start;margin:10px 0}
+  .card{border:1px solid #444;border-radius:6px;padding:8px;background:#222;max-width:200px}
+  .card img,.card video{max-width:100%;display:block}
+  .card audio{width:180px}
+  .card svg{width:100px;height:100px;display:block}
+  .card .bg-demo{width:100px;height:100px;background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ff5722"/><circle cx="50" cy="50" r="30" fill="%23fff"/></svg>');background-size:cover}
+  .card label{display:block;font-size:11px;color:#999;margin-top:4px}
+</style>
+</head>
+<body>
+
+<h1>Imageination Test Fixture</h1>
+<p>This page exercises all scanning paths in the content script. Open the Imageination popup to verify.</p>
+
+<!-- ============ IMAGES ============ -->
+<h2>Images (&lt;img&gt;)</h2>
+<div class="row">
+  <div class="card">
+    <img src="https://via.placeholder.com/150.png?text=PNG" alt="Placeholder PNG" width="150" height="150" />
+    <label>PNG (with dims)</label>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/150.jpg?text=JPEG" alt="Placeholder JPEG" width="150" height="150" />
+    <label>JPEG</label>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/150.webp?text=WebP" alt="Placeholder WebP" width="150" height="150" />
+    <label>WebP</label>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/150.gif?text=GIF" alt="Placeholder GIF" width="150" height="150" />
+    <label>GIF</label>
+  </div>
+  <div class="card">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-label="Inline SVG star">
+      <polygon points="50,5 63,38 98,38 70,60 80,95 50,75 20,95 30,60 2,38 37,38" fill="#FFD700"/>
+    </svg>
+    <label>Inline SVG (fromType: svg)</label>
+  </div>
+</div>
+
+<!-- ============ PICTURE ============ -->
+<h2>Picture (&lt;picture&gt;)</h2>
+<div class="row">
+  <div class="card">
+    <picture>
+      <source srcset="https://via.placeholder.com/200.avif?text=AVIF" type="image/avif" />
+      <source srcset="https://via.placeholder.com/200.webp?text=WebP" type="image/webp" />
+      <img src="https://via.placeholder.com/200.jpg?text=JPG" alt="Picture demo" width="200" height="100" />
+    </picture>
+    <label>Picture source with AVIF/WebP/JPG</label>
+  </div>
+</div>
+
+<!-- ============ FAVICON ============ -->
+<h2>Favicons (&lt;link&gt;)</h2>
+<div class="row">
+  <div class="card">
+    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%234caf50'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='18'>F</text></svg>" alt="Favicon icon" />
+    <label>Favicon (from link[rel=icon])</label>
+  </div>
+</div>
+
+<!-- ============ BACKGROUND IMAGE ============ -->
+<h2>CSS Background</h2>
+<div class="row">
+  <div class="card">
+    <div class="bg-demo"></div>
+    <label>CSS background-image (inline style)</label>
+  </div>
+</div>
+
+<!-- ============ VIDEO ============ -->
+<h2>Video (&lt;video&gt;)</h2>
+<div class="row">
+  <div class="card">
+    <video controls width="180" poster="https://via.placeholder.com/180x100.png?text=Poster">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+      Your browser does not support video.
+    </video>
+    <label>Video source + poster</label>
+  </div>
+  <div class="card">
+    <video controls width="180">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+    </video>
+    <label>Video source only (no poster)</label>
+  </div>
+</div>
+
+<!-- ============ AUDIO ============ -->
+<h2>Audio (&lt;audio&gt;)</h2>
+<div class="row">
+  <div class="card">
+    <audio controls src="https://www.w3schools.com/html/horse.mp3">
+      Your browser does not support audio.
+    </audio>
+    <label>Audio src (MP3)</label>
+  </div>
+  <div class="card">
+    <audio controls>
+      <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg" />
+    </audio>
+    <label>Audio source (MP3)</label>
+  </div>
+</div>
+
+</body>
+</html>

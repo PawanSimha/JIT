@@ -23,8 +23,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
   <!-- ── Primary Meta ── -->
   <title>Imageination - One-Click Image Downloader | Free Chrome Extension</title>
-  <meta name="description" content="Imageination lets you download any image from any webpage with one click. Automatically scans and categorizes PNG, JPEG, WebP, SVG, ICO and more. Download individually or in batches. Free and open source." />
-  <meta name="keywords" content="Imageination, image downloader, Chrome extension, bulk image download, PNG downloader, JPEG downloader, WebP downloader, open source, privacy-first" />
+  <meta name="description" content="Imageination scans any webpage for images, video and audio. Download PNG, JPEG, WebP, SVG, GIF, AVIF, ICO, MP4, WebM, MP3, and more. Individual downloads or batch ZIP archive. Free and open source." />
+  <meta name="keywords" content="Imageination, media downloader, Chrome extension, bulk download, PNG, JPEG, WebP, MP4, MP3, open source, privacy-first, video downloader, audio downloader" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Pawan Simha R" />
   <meta name="theme-color" content="#000000" />
@@ -33,8 +33,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
   <!-- ── Open Graph ── -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Imageination - One-Click Image Downloader" />
-  <meta property="og:description" content="Download any image from any webpage with one click. Scans and categorizes PNG, JPEG, WebP, SVG, ICO and more. Free Chrome extension." />
+  <meta property="og:title" content="Imageination - Media Downloader for Chrome" />
+  <meta property="og:description" content="Scan any webpage for images, video and audio. Download individually or batch as ZIP. PNG, JPEG, WebP, SVG, GIF, AVIF, MP4, MP3 and more. Free Chrome extension." />
   <meta property="og:url" content="https://pawansimha.github.io/JIT/descriptions/Imageination.html" />
   <meta property="og:image" content="https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.webp" />
   <meta property="og:image:width" content="512" />
@@ -45,8 +45,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
   <!-- ── Twitter Card ── -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Imageination - One-Click Image Downloader" />
-  <meta name="twitter:description" content="Download any image from any webpage with one click. Free, open source Chrome extension." />
+  <meta name="twitter:title" content="Imageination - Media Downloader for Chrome" />
+  <meta name="twitter:description" content="Images, video and audio from any page. Download individually or batch as ZIP. Free, open source Chrome extension." />
   <meta name="twitter:image" content="https://raw.githubusercontent.com/PawanSimha/JIT/main/Logo.webp" />
   <meta name="twitter:image:alt" content="Imageination logo" />
 
@@ -58,9 +58,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     "name": "Imageination",
     "applicationCategory": "BrowserExtension",
     "operatingSystem": "Chrome",
-    "description": "One-click download any image from any webpage. Scans and categorizes PNG, JPEG, WebP, SVG, ICO and more, with batch download support.",
+    "description": "Download images, video and audio from any webpage. Scans and categorizes PNG, JPEG, WebP, SVG, GIF, AVIF, ICO, MP4, WebM, MP3 and more. Download individually or batch as ZIP.",
     "softwareVersion": "1.0.0",
-    "size": "15 KB",
+    "size": "16 KB",
     "dateModified": "2026-06",
     "offers": {
       "@type": "Offer",
@@ -72,7 +72,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       "name": "Pawan Simha R",
       "url": "https://portfolio-pawansimha.vercel.app"
     },
-    "permissions": ["activeTab", "downloads", "storage"]
+    "permissions": ["activeTab", "downloads"]
   }
   </script>
 
@@ -123,12 +123,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <div class="container">
       <div class="ext-detail-card">
         <div class="ext-detail-header">
-          <img src="../Imageination/icons/Imageination.png" alt="Imageination" class="ext-detail-logo" width="96" height="96" />
+          <img src="../Imageination/icons/icon.png" alt="Imageination" class="ext-detail-logo" width="96" height="96" />
           <div class="ext-detail-info">
             <h1 id="ext-name">Imageination</h1>
             <div class="ext-detail-meta">
               <span>Version 1.0</span>
-              <span>15 KB</span>
+                <span>16 KB</span>
               <span>Updated June 2026</span>
               <span class="badge-live">Free</span>
               <span class="badge-live">Open Source</span>
@@ -143,7 +143,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       <div class="ext-detail-body">
         <div class="ext-detail-section">
           <h2><span class="sec-icon sec-icon-blue">&#9679;</span> Overview</h2>
-          <p>Imageination is a one-click image downloader that scans any webpage for images and presents them in organized categories. Whether you need a single PNG icon, a batch of JPEG photos, or all WebP images from a page, Imageination lets you download them instantly. No account needed, no servers involved. Everything runs locally in your browser.</p>
+          <p>Imageination scans any webpage for images, video, and audio, then presents them in a clean categorized popup. It detects everything from <code>&lt;img&gt;</code> tags and favicons to inline SVGs, CSS backgrounds, <code>&lt;video&gt;</code> sources and posters, and <code>&lt;audio&gt;</code> elements. Download individual files directly or batch entire categories as a single ZIP archive. No account needed, no servers involved. Everything runs locally in your browser.</p>
         </div>
 
         <div class="ext-detail-section">
@@ -160,35 +160,42 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
               <div class="feature-icon feature-icon-green">&#9881;</div>
               <div class="feature-text">
                 <strong>Auto-Categorization</strong>
-                <span>Images are automatically sorted by type: PNG, JPEG, JPG, WebP, SVG, ICO, and any other format found on the page.</span>
+                <span>Media is automatically sorted by type: PNG, JPEG, JPG, WebP, SVG, GIF, AVIF, ICO, MP4, WebM, MOV, FLV, MP3, M4A, WAV, OGG, AAC, WebA, plus meta-categories for Favicon, Video, and Audio.</span>
               </div>
             </div>
             <div class="feature-item">
               <div class="feature-icon feature-icon-yellow">&#9881;</div>
               <div class="feature-text">
-                <strong>Batch Download</strong>
-                <span>Download all images of a specific type at once with the "Download All" button per category.</span>
+                <strong>Batch ZIP Download</strong>
+                <span>Download all media of a specific type at once, or everything on the page, packaged as a single ZIP archive with no server round-trips.</span>
               </div>
             </div>
             <div class="feature-item">
               <div class="feature-icon feature-icon-red">&#9733;</div>
               <div class="feature-text">
                 <strong>Smart Page Scan</strong>
-                <span>Detects images from <code>&lt;img&gt;</code> tags, <code>&lt;picture&gt;</code> sources, inline SVGs, favicons, and CSS background images.</span>
+                <span>Detects images from <code>&lt;img&gt;</code> tags, <code>&lt;picture&gt;</code> sources, inline SVGs, favicons, CSS backgrounds, plus <code>&lt;video&gt;</code> sources and posters, and <code>&lt;audio&gt;</code> elements.</span>
               </div>
             </div>
             <div class="feature-item">
               <div class="feature-icon feature-icon-blue">&#9888;</div>
               <div class="feature-text">
-                <strong>Accordion Interface</strong>
-                <span>Collapsible category sections in the popup make it easy to browse and download images without clutter.</span>
+                <strong>Sidebar Layout</strong>
+                <span>The popup features a left sidebar listing all 21 media categories. Click any category to show its items in a scrollable 2-column grid on the right.</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon feature-icon-blue">&#9670;</div>
+              <div class="feature-text">
+                <strong>Video &amp; Audio Preview</strong>
+                <span>Video cards show the poster frame with a play overlay. Audio cards display a music note icon. All cards show filename, dimensions, type badge, and a Download button.</span>
               </div>
             </div>
             <div class="feature-item">
               <div class="feature-icon feature-icon-green">&#10003;</div>
               <div class="feature-text">
                 <strong>Privacy First</strong>
-                <span>No data collection. No tracking. No servers. All image scanning and downloading happens locally in your browser.</span>
+                <span>No data collection. No tracking. No servers. All scanning and downloading happens locally in your browser. No permissions beyond the active tab and downloads.</span>
               </div>
             </div>
           </div>
@@ -196,7 +203,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
         <div class="ext-detail-section">
           <h2><span class="sec-icon sec-icon-blue">&#9881;</span> How It Works</h2>
-          <p>When you open the Imageination popup on any webpage, the extension's content script scans the page DOM for all image sources: <code>&lt;img&gt;</code> elements, <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> tags, inline <code>&lt;svg&gt;</code> elements (serialized to data URLs), favicon <code>&lt;link&gt;</code> tags, and CSS <code>background-image</code> properties. Images are deduplicated and categorized by file extension (PNG, JPEG, JPG, WebP, SVG, ICO, and others). The categorized list is sent to the popup, where you can browse by type and download individual images or entire categories with one click. Downloads are handled by the <code>chrome.downloads</code> API with 300ms delays between batch downloads to avoid overwhelming the download manager.</p>
+          <p>When you open the Imageination popup on any webpage, the extension's content script scans the page DOM for all media sources: <code>&lt;img&gt;</code> elements (with natural/attribute dimension fallback), <code>&lt;picture&gt;</code> and <code>&lt;source&gt;</code> tags, inline <code>&lt;svg&gt;</code> elements (serialized to data URLs), favicon <code>&lt;link&gt;</code> tags, CSS <code>background-image</code> properties, <code>&lt;video&gt;</code> elements (sources + posters), and <code>&lt;audio&gt;</code> elements. Media is deduplicated by normalized URL and categorized by file extension into 21 format groups plus meta-categories (Favicon, Video, Audio). The categorized list is sent to the popup, where a left sidebar lists all available categories. Click any category to show its items in a 2-column grid. Download individual files directly via <code>chrome.downloads.download</code> or batch entire categories as a single ZIP archive (store method, CRC-32 validated, built entirely in-memory).</p>
         </div>
 
         <div class="ext-detail-section">
